@@ -26,7 +26,7 @@ gem 'jquery-rails'
 # Deploy with Capistrano
 # gem 'capistrano'
 
-group :test, :develoment do
+group :test, :development do
   gem 'sqlite3'
   gem 'rspec-rails'
   gem 'watchr'
