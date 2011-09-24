@@ -1,0 +1,10 @@
+---
+facebook: &facebook
+  app_id: 127626397337891
+  secert_key: 53300ce0feee8eff129e318a533d1400
+
+development: *facebook
+
+test: *facebook
+
+production: *facebook
