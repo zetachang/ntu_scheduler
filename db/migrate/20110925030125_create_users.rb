@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :name, :null => false
       t.string :student_id, :null => false
       t.integer :facebook_uid, :limit => 8, :null => false
-      t.integer :schedule_id, :null => false
+      t.integer :schedule_id
 
       t.timestamps
     end
