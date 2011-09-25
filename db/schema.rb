@@ -14,6 +14,7 @@
 ActiveRecord::Schema.define(:version => 20110925032417) do
 
   create_table "days", :force => true do |t|
+    t.integer  "schedule_id", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -22,6 +23,7 @@ ActiveRecord::Schema.define(:version => 20110925032417) do
     t.string   "name",       :null => false
     t.string   "location"
     t.integer  "time",       :null => false
+    t.integer  "day_id",     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -35,14 +37,17 @@ ActiveRecord::Schema.define(:version => 20110925032417) do
   add_index "schedule_sets", ["permalink_id"], :name => "index_schedule_sets_on_permalink_id", :unique => true
 
   create_table "schedules", :force => true do |t|
+    t.integer  "user_id",         :null => false
+    t.integer  "schedule_set_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
-    t.string   "username",                  :null => false
+    t.string   "name",                  :null => false
     t.string   "student_id",                :null => false
     t.integer  "facebook_uid", :limit => 8, :null => false
+    t.integer  "schedule_id",               :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -4,6 +4,7 @@ class CreateLessons < ActiveRecord::Migration
       t.string :name, :null => false
       t.string :location
       t.integer :time, :null => false
+      t.integer :day_id, :null => false
 
       t.timestamps
     end
