@@ -10,27 +10,35 @@ describe ApplicationController do
   end
 
   describe "Validation for Facebook" do
+    before(:each) do
+      @oauth = stub('oauth')
+      @oauth.stub(:parse_signed_request).with("unauthorized").and_return({})
+      @oauth.stub(:parse_signed_request).with("authorized").and_return("user_id" => "1234567890")
+      @oauth.stub(:url_for_oauth_code).and_return("www.www.www")
+      @graph = stub('graph')
+      @graph.stub(:get_object).with("me").and_return(@me = stub('me'))
+    end
+
     it "render 404.html page if not in Facebook" do
       get :index
       response.response_code.should == 404
     end
 
     it "render OAuth Dialog script if not authorized" do
-      Koala::Facebook::OAuth.should_receive(:new).and_return(oauth = double("oauth"))
-      oauth.should_receive(:parse_signed_request).with("somestring").and_return({})
-      oauth.should_receive(:url_for_oauth_code).and_return("someurl")
+      Koala::Facebook::OAuth.should_receive(:new).and_return(@oauth)
       
-      get :index, :signed_request => "somestring"
-      response.body.should =~ /<script>.*someurl.*<\/script>/
+      get :index, :signed_request => "unauthorized"
+      response.body.should =~ /<script>.*www\.www\.www.*<\/script>/
     end
 
     it "create graph if authorized" do
-      Koala::Facebook::OAuth.should_receive(:new).and_return(oauth = double("oauth"))
-      oauth.should_receive(:parse_signed_request).with("somestring")
-                                                 .and_return("user_id" => "123")
+      Koala::Facebook::OAuth.should_receive(:new).and_return(@oauth)
+      Koala::Facebook::GraphAPI.should_receive(:new).and_return(@graph)
       
-      get :index, :signed_request => "somestring"
-      assigns[:graph].should_not be_nil
+      get :index, :signed_request => "authorized"
+      assigns[:graph].should == @graph
+      assigns[:me].should == @me
+      session[:facebook_uid].should == "1234567890"
     end
   end
 end
