@@ -15,7 +15,10 @@ class ApplicationController < ActionController::Base
     raise ActionController::RoutingError, "run outside Facebook" unless params[:signed_request]
 
     @signed_request = Koala::Facebook::OAuth.new.parse_signed_request(params[:signed_request])
-    unless @signed_request["user_id"]
+    if @signed_request["user_id"]
+      @graph = Koala::Facebook::GraphAPI.new(@signed_request["oauth_token"])
+    else
+      # if user hasn't authorized this app, make him do it
       @oauth = Koala::Facebook::OAuth.new
       render :text => "<script> top.location.href = '#{@oauth.url_for_oauth_code}'; </script>"
     end
