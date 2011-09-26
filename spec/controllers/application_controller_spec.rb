@@ -9,9 +9,12 @@ describe ApplicationController do
   end
 
   describe "Validation for session" do
-    it "should reload whole page if user dosesn't have session" do
+    it "should show OAuth Dialog f user dosesn't have session" do
+      Koala::Facebook::OAuth.stub(:new).and_return(@oauth = double("oauth"))
+      @oauth.stub(:url_for_oauth_code).and_return("oauth_dialog_url")
+
       get :index
-      response.body.should =~ /.*top\.location\.reload\(\)*/ 
+      response.body.should =~ /<script>.*oauth_dialog_url.*<\/script>/
     end
     
     it "should keep silent if user have session" do
