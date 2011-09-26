@@ -44,5 +44,24 @@ module NtuScheduler
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    if defined?(Bundler)
+      Bundler.require *Rails.groups(:assets => %w(development test))
+    end
+
+    stylesheets_directory = "#{Rails.root}/app/assets/stylesheets"
+    config.assets.precompile += Dir.glob("#{stylesheets_directory}/**/*.s[ac]ss*").
+                                map{|f| f[stylesheets_directory.size+1..-1]}.
+                                select do |file|
+                                  if config.assets.precompile.include?(file)
+                                    false
+                                  elsif File.basename(file)[0...1] == "_"
+                                    false
+                                  else
+                                    true
+                                  end
+                                end
+
+    # if you prefer `.sass` over `.scss`.
+    config.sass.preferred_syntax = :sass
   end
 end
