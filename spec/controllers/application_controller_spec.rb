@@ -1,36 +1,28 @@
 require "spec_helper"
-require "ruby_debug"
 
 describe ApplicationController do
 
   controller do
     def index
-      render :nothing => true
+      render :text => "session exist"
     end
   end
 
-  describe "Validation for Facebook" do
-    it "render 404.html page if not in Facebook" do
+  describe "Validation for session" do
+    it "should reload whole page if user dosesn't have session" do
       get :index
-      response.response_code.should == 404
+      response.body.should =~ /.*top\.location\.reload\(\)*/ 
     end
+    
+    it "should keep silent if user have session" do
+      session[:graph] = (graph = double("graph"))
+      graph.stub(:get_object).with("me").and_return(me = double("me"))
 
-    it "render OAuth Dialog script if not authorized" do
-      Koala::Facebook::OAuth.should_receive(:new).and_return(oauth = double("oauth"))
-      oauth.should_receive(:parse_signed_request).with("somestring").and_return({})
-      oauth.should_receive(:url_for_oauth_code).and_return("someurl")
-      
-      get :index, :signed_request => "somestring"
-      response.body.should =~ /<script>.*someurl.*<\/script>/
-    end
-
-    it "create graph if authorized" do
-      Koala::Facebook::OAuth.should_receive(:new).and_return(oauth = double("oauth"))
-      oauth.should_receive(:parse_signed_request).with("somestring")
-                                                 .and_return("user_id" => "123")
-      
-      get :index, :signed_request => "somestring"
+      get :index
+      response.body.should == "session exist" 
       assigns[:graph].should_not be_nil
+      assigns[:me].should_not be_nil
     end
-  end
+  end 
+  
 end
