@@ -1,0 +1,8 @@
+if($(".me").length === 0) {
+  $('body').append($('<div></div>').addClass("me")
+           .html("<%= raw @me.to_yaml.gsub(/\n/, "<br/>").gsub(/ /, "&nbsp;")%>"));
+}
+else {
+  $('.me').detach();
+}
+
