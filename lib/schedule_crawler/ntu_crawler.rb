@@ -8,14 +8,14 @@ module ScheduleCrawler
     end
 
     def crawl
-      doc = Nokogiri::HTML(open(@schedule_url))
-      parse(doc) 
+      @doc = Nokogiri::HTML(open(@schedule_url))
+      parse
     end
 
     private
-    def parse(doc)
+    def parse
       schedule = @user.schedule
-      grids = doc.css(".class-record")[1].css("td").to_a
+      grids = @doc.css(".class-record")[1].css("td").to_a
       (0..5).each { |d|
         day = schedule.days[d]
         grids.select.with_index { |g,i| i % 6 == d }.each.with_index { |g, time|
