@@ -36,5 +36,5 @@ group :test, :development do
   gem 'watchr'
   gem 'shoulda-matchers'
   gem 'ruby-debug19', :require => 'ruby-debug'
-  gem 'factory_girl_rails'
+  gem 'factory_girl_rails', :require => false
 end
