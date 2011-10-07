@@ -1,4 +1,6 @@
 NtuScheduler::Application.routes.draw do
+  resource :users, :only => [:create]
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -51,7 +53,7 @@ NtuScheduler::Application.routes.draw do
   root :to => 'welcome#index'
   # TODO: it's just for test!
   match "testme" => "tests#display", :as => "test_me"
-
+  get "main/index", :as => :main
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
