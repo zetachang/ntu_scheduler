@@ -5,6 +5,5 @@ class Schedule < ActiveRecord::Base
 
   validates_presence_of :user_id
 
-  after_create { |s| 6.times { s.days << Day.create } }
 
 end
