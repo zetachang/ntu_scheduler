@@ -1,7 +1,5 @@
-require "facebook_exception"
-
 class ApplicationController < ActionController::Base
-  rescue_from FacebookException::SessionError, :with => :oauth_dialog
+  rescue_from Exception, :with => :unknown_error
   before_filter :validate_session
 
   protect_from_forgery
@@ -12,6 +10,16 @@ class ApplicationController < ActionController::Base
 
   def oauth_dialog
     top_redirect_to Koala::Facebook::OAuth.new.url_for_oauth_code
+  end
+
+  # TODO: show a error page then redirect
+  def unknown_error
+    logger.error $!
+    respond_to do |format|
+      format.html { oauth_dialog }
+      format.js { render :nothing => true, :status =>  500 }
+      format.json { render :nothing => true, :status => 500 }
+    end
   end
 
   def validate_session
