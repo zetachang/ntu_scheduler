@@ -14,7 +14,8 @@ class ApplicationController < ActionController::Base
 
   # TODO: show a error page then redirect
   def unknown_error
-    logger.error $!
+    logger.error $!.inspect
+    logger.error $!.backtrace.join("\n")
     respond_to do |format|
       format.html { oauth_dialog }
       format.js { render :nothing => true, :status =>  500 }
