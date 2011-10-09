@@ -9,9 +9,9 @@ class UsersController < ApplicationController
     @user.student_id.upcase!
 
     if @user.student_id.blank?
-      echo[:message] = "請填入學號"
+      echo[:message] = t("users.no_student_id")
     elsif @user.student_id !~ /^\w\d{8}$/
-      echo[:message] = "請檢查學號是否正確"
+      echo[:message] = t("users.illegal_student_id")
     else
 
       @schedule = Schedule.new()
@@ -20,13 +20,14 @@ class UsersController < ApplicationController
         @schedule.load_from_eportfolio(@user.student_id)
       rescue ScheduleCrawler::NoPublicError
         # TODO: add a step-by-step tutorial page
-        echo[:message] = "請將你的e-portfolio設為公開！"
+        echo[:message] = t("users.no_public")
       rescue ScheduleCrawler::NoLessonError
-        echo[:message] = "本學期的課表尚未公佈(或計算機中心正在維修)"
+        echo[:message] = t("users.no_lesson")
       rescue ScheduleCrawler::HTTPError
-        echo[:message] = "請檢查學號是否正確"
+        echo[:message] = t("users.illegal_student_id")
       else
         @user.save!
+        @schedule.save!
         echo[:status] = "SUCCESS"
       end
 
