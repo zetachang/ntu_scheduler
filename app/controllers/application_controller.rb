@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   end
 
   def oauth_dialog
-    top_redirect_to Koala::Facebook::OAuth.new.url_for_oauth_code
+    top_redirect_to Koala::Facebook::OAuth.new.url_for_oauth_code(:permissions => Facebook::PERMISSIONS)
   end
 
   def unknown_error

@@ -7,6 +7,7 @@ module Facebook
   APP_ID = CONFIG['app_id']
   SECRET = CONFIG['secret_key']
   CALLBACK_URL = CONFIG['callback_url']
+  PERMISSIONS = CONFIG['permissions']
 end
 
 Koala::Facebook::OAuth.class_eval do
