@@ -4,6 +4,7 @@ gem 'rails', '3.1.0'
 gem 'koala', '~> 1.1.0'
 gem 'nokogiri', '~> 1.5.0'
 gem 'rails-i18n', '~> 0.1.9'
+gem 'json', '~> 1.6.1'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
