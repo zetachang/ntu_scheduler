@@ -3,8 +3,6 @@ class Schedule < ActiveRecord::Base
   belongs_to :user
   belongs_to :schedule_set
 
-  validates_presence_of :user_id
-
   # probably raise:
   # - ScheduleCrawler::NoPublicError
   # -                  HTTPError
