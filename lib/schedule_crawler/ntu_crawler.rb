@@ -23,7 +23,7 @@ module ScheduleCrawler
 
     def parse(doc)
       raise NoPublicError if doc.inner_html =~ /此 ePortfolio 設定為不公開/
-      lessons_array = Array.new(6, [])
+      lessons_array = Array.new(6) { [] }
       grids = doc.css(".class-record")[1].css("td").to_a
       (0..5).each { |d|
         grids.select.with_index { |g,i| i % 6 == d }.each { |g|

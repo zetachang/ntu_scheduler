@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     echo = { :status => "ERROR" }
 
     @user = User.new(params[:user])
-    @user.update_attributes(:name => @me["name"], :facebook_uid => @me["id"])
+    @user.attributes = { :name => @me["name"], :facebook_uid => @me["id"] }
     @user.student_id.upcase!
 
     if @user.student_id.blank?
