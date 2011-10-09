@@ -27,7 +27,6 @@ class UsersController < ApplicationController
         echo[:message] = t("users.illegal_student_id")
       else
         @user.save!
-        @schedule.save!
         echo[:status] = "SUCCESS"
       end
 
