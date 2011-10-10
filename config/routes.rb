@@ -1,5 +1,6 @@
 NtuScheduler::Application.routes.draw do
   resource :users, :only => [:create]
+  get "schedules/show"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -52,7 +53,7 @@ NtuScheduler::Application.routes.draw do
   # just remember to delete public/index.html.
   root :to => 'welcome#index'
   # TODO: it's just for test!
-  match "testme" => "tests#display", :as => "test_me"
+  get "tests/display", :as => "test_me"
   get "main/index", :as => :main
   # See how all your routes lay out with "rake routes"
 
