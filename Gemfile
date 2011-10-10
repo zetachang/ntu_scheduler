@@ -1,6 +1,10 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.1.0'
+gem 'koala', '~> 1.1.0'
+gem 'nokogiri', '~> 1.5.0'
+gem 'rails-i18n', '~> 0.1.9'
+gem 'json', '~> 1.6.1'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -30,10 +34,17 @@ gem 'jquery-rails'
 
 group :test, :development do
   gem 'sqlite3'
+  gem 'ruby-debug19', :require => 'ruby-debug'
+end
+
+group :development do
+  gem 'factory_girl_rails'
+end
+
+group :test do
   gem 'rspec-rails'
   gem 'spork', '~> 0.9.0.rc'
   gem 'watchr'
   gem 'shoulda-matchers'
-  gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'factory_girl_rails', :require => false
 end
