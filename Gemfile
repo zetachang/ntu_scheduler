@@ -31,7 +31,9 @@ gem 'jquery-rails'
 group :test, :development do
   gem 'sqlite3'
   gem 'rspec-rails'
+  gem 'spork', '~> 0.9.0.rc'
   gem 'watchr'
   gem 'shoulda-matchers'
   gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'factory_girl_rails', :require => false
 end
