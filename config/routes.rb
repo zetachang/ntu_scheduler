@@ -1,4 +1,6 @@
 NtuScheduler::Application.routes.draw do
+  get "schedules/show"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
   root :to => 'main#index'
