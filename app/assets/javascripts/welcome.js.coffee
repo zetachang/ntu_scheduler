@@ -2,7 +2,8 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-$('form.new_user').live('ajax:success', (xhr, data, status) ->
-    if data.status == "SUCCESS"
-        location.href = "/main"
-)
+$ ->
+    $('form.new_user').bind('ajax:success', (xhr, data, status) ->
+        if data.status == "SUCCESS"
+            location.href = "/main"
+    )
