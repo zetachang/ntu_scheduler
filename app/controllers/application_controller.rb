@@ -16,7 +16,6 @@ class ApplicationController < ActionController::Base
     logger.error $!.inspect
     logger.error $!.backtrace.join("\n")
     respond_to do |format|
-      # TODO: show a error page instead of OAuth Dialog
       format.html { oauth_dialog }
       format.js { render :nothing => true, :status =>  500 }
       format.json { render :nothing => true, :status => 500 }
