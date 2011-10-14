@@ -1,0 +1,13 @@
+.span16
+  = form_tag :controller => "schedules", :action => 'show_friend' do
+    = text_field_tag "name",nil, :placeholder => 'Enter search term...', :class => 'span16'
+    = submit_tag "Search", :class => "btn"
+
+#user_info.span16
+  .span3
+    = image_tag "http://placehold.it/90x90"
+  .span4
+    %h3 David Chang
+    %h4 b00902090
+.span16
+  = render "schedules/show"
