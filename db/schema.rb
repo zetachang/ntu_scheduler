@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110926120844) do
+ActiveRecord::Schema.define(:version => 20111016101110) do
 
   create_table "days", :force => true do |t|
     t.integer  "schedule_id", :null => false
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20110926120844) do
     t.string   "permalink"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
   add_index "schedule_sets", ["permalink"], :name => "index_schedule_sets_on_permalink", :unique => true
@@ -47,7 +48,6 @@ ActiveRecord::Schema.define(:version => 20110926120844) do
     t.string   "name",                      :null => false
     t.string   "student_id",                :null => false
     t.integer  "facebook_uid", :limit => 8, :null => false
-    t.integer  "schedule_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
