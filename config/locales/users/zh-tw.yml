@@ -1,0 +1,7 @@
+zh-TW:
+  users:
+    no_student_id: 請填入學號
+    illegal_student_id: 請檢查學號是否正確
+    no_public: 請將你的e-portfolio設為公開！
+    no_lesson: 本學期的課表尚未公佈(或計算機中心正在維修)
+  
