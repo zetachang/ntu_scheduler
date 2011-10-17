@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  rescue_from Exception, :with => :unknown_error
+  #rescue_from Exception, :with => :unknown_error
   before_filter :validate_session
 
   protect_from_forgery
