@@ -1,6 +1,6 @@
 .span16
   = form_tag :controller => "schedules", :action => 'show_friend' do
-    = text_field_tag "name",nil, :placeholder => 'Enter search term...', :class => 'span16'
+    = text_field_tag "name",nil, :placeholder => 'Enter search term...', :class => 'span16', :id =>'fb_suggest'
     = submit_tag "Search", :class => "btn"
 
 #user_info.span16

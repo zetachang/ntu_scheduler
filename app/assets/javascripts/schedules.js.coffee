@@ -1,5 +1,8 @@
 $ ->
-    $('table td').each ->
-        $(this).attr("title", "Location")
-        $(this).attr("data-content", 'The popover plugin provides a simple interface for adding popovers to your application. It extends the bootstrap-twipsy.js plugin, so be sure to grab that file as well when including popovers in your project!')
-        $(this).popover()
+  if $('#fb_suggest').length > 0
+    console.log 'XD'
+    $.get "/main/friends", (data) ->
+      console.log data
+      friends = data
+      $('#fb_suggest').autocomplete
+        source: friends
