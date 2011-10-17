@@ -6,6 +6,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.autoSuggest
 //= require bootstrap
 //= require_tree .
