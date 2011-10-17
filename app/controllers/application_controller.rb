@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  #rescue_from Exception, :with => :unknown_error
+  rescue_from Exception, :with => :unknown_error if Rails.env.production?
   before_filter :validate_session
 
   protect_from_forgery
@@ -16,7 +16,6 @@ class ApplicationController < ActionController::Base
     logger.error $!.inspect
     logger.error $!.backtrace.join("\n")
     respond_to do |format|
-      # TODO: show a error page instead of OAuth Dialog
       format.html { oauth_dialog }
       format.js { render :nothing => true, :status =>  500 }
       format.json { render :nothing => true, :status => 500 }

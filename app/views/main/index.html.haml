@@ -13,4 +13,7 @@
   #my_schedule.active
     .row
       .span16
-        = render "schedules/show"
+        = render :partial => "schedules/show", :locals => { :schedule => @user.schedule }
+  #schedule_set
+    .row
+      .span16
