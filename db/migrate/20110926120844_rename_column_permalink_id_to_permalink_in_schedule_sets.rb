@@ -5,6 +5,6 @@ class RenameColumnPermalinkIdToPermalinkInScheduleSets < ActiveRecord::Migration
     rename_column :schedule_sets, :permalink_id, :permalink
     change_column :schedule_sets, :permalink, :string
 
-    add_index :schedule_sets, :permalink, :unique = true
+    add_index :schedule_sets, :permalink, :unique => true
   end
 end
