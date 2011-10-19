@@ -31,5 +31,13 @@ class ApplicationController < ActionController::Base
       raise FacebookException::SessionError
     end
   end
+  
+  def current_user
+    @current_user ||= User.includes(:schedule => {:days => :lessons}).find_by_facebook_uid(@me["id"])
+  end
+  
+  def current_friends
+    @current_friends ||= @graph.get_connections("me", "friends")
+  end
 
 end

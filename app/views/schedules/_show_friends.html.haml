@@ -1,14 +1,6 @@
 .span16
-  = form_tag url_for(:controller => "schedules", :action => 'show_friend'), {:remote => true, :method => :post, :id => 'suggest_form'} do
-    = text_field_tag "name", nil, :placeholder => 'Enter search term...', :class => 'span16', :id =>'fb_suggest'
+  = form_tag url_for(:controller => "schedules", :action => 'show_friend'), {:remote => true, :method => :post, :id => 'suggest_form', "data-type" => 'text'} do
+    = text_field_tag "name", nil, :placeholder => 'Enter search term...', :id =>'fb_suggest', :class => 'span10'
     = submit_tag "Search", :class => "btn"
-
+.interaction.span11
 #result
-  #user_info.span16
-    .span3
-      = image_tag "http://placehold.it/90x90"
-    .span4
-      %h3 David Chang
-      %h4 b00902090
-  .schedule.span16
-    = render "schedules/show"
