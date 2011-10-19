@@ -7,6 +7,12 @@ module Facebook
   APP_ID = CONFIG['app_id']
   SECRET = CONFIG['secret_key']
   CALLBACK_URL = CONFIG['callback_url']
+  PERMISSIONS = CONFIG['permissions']
+  if Rails.env.test?
+    test_users = Koala::Facebook::TestUsers.new(:app_id => APP_ID, :secret => SECRET)
+    test_user = test_users.list[0] || test_users.create(true, PERMISSIONS)
+    TEST_GRAPH = Koala::Facebook::GraphAPI.new(test_user['access_token'])
+  end
 end
 
 Koala::Facebook::OAuth.class_eval do

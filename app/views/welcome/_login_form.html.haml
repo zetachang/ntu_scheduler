@@ -1,0 +1,7 @@
+.login-form
+  .error
+  = form_for(User.new, :remote => true, :format => :json) do |f|
+    = f.label :student_id, "請輸入學號："
+    = f.text_field :student_id
+    = f.submit "確認", :disable_with => "學號確認中……"
+    

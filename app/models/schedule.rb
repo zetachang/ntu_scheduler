@@ -3,8 +3,21 @@ class Schedule < ActiveRecord::Base
   belongs_to :user
   belongs_to :schedule_set
 
-  validates_presence_of :user_id
-
-  after_create { |s| 6.times { s.days << Day.create } }
+  # probably raise:
+  # - ScheduleCrawler::NoPublicError
+  # -                  HTTPError
+  # -                  NoLessonError
+  def load_from_eportfolio(student_id)
+    crawler = ScheduleCrawler::NtuCrawler.new(student_id)
+    lessons_array = crawler.crawl
+    self.days.destroy_all
+    (1..6).each{|i| self.days << Day.new}
+    lessons_array.each.with_index { |d, i|
+      day = self.days[i]
+      d.each.with_index { |name, time|
+        day.lessons << Lesson.new(:time => time, :name => name) if name.present?
+      }
+    }
+  end
 
 end
