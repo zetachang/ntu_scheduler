@@ -13,7 +13,9 @@ class ApplicationController < ActionController::Base
   end
 
   def unknown_error
-    logger.error $!.inspect
+    logger.error $!.original_exception.class.to_s
+    logger.error $!.message
+    logger.error $!.source_extract
     logger.error $!.backtrace.join("\n")
     respond_to do |format|
       format.html { oauth_dialog }
