@@ -1,6 +1,7 @@
 NtuScheduler::Application.routes.draw do
   resource :users, :only => [:create]
-
+  match 'schedules/show_friend' => 'schedules#show_friend' 
+  get 'main/friends' => 'main#friends'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
