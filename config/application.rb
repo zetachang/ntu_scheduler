@@ -47,17 +47,7 @@ module NtuScheduler
     config.assets.version = '1.0'
 
     stylesheets_directory = "#{Rails.root}/app/assets/stylesheets"
-    config.assets.precompile += Dir.glob("#{stylesheets_directory}/**/*.s[ac]ss*").
-                                map{|f| f[stylesheets_directory.size+1..-1]}.
-                                select do |file|
-                                  if config.assets.precompile.include?(file)
-                                    false
-                                  elsif File.basename(file)[0...1] == "_"
-                                    false
-                                  else
-                                    true
-                                  end
-                                end
+    config.assets.precompile << /(^[^_]|\/[^_])[^\/]*/
 
     # if you prefer `.sass` over `.scss`.
     config.sass.preferred_syntax = :sass
