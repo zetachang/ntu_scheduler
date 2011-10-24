@@ -1,7 +1,8 @@
 class Schedule < ActiveRecord::Base
   has_many :days
   belongs_to :user
-  belongs_to :schedule_set
+  has_many :schedule_sets, :through => :settings
+  has_many :settings
 
   # probably raise:
   # - ScheduleCrawler::NoPublicError
