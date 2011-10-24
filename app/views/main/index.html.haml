@@ -9,12 +9,11 @@
   #friends
     .row
       .span16
-        %h3 asjkajdslja;
-        %h3 akfjsdfl
+        = render "schedules/show_friends"
   #my_schedule.active
     .row
       .span16
-        = render :partial => "schedules/show", :locals => { :schedule => @user.schedule }
+        = render :partial =>"schedules/show", :locals => {:schedule => @schedule}
   #schedule_set
     .row
       .span16

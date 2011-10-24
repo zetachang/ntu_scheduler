@@ -1,0 +1,6 @@
+#user_info.span16
+  .span3
+    = image_tag "http://graph.facebook.com/#{user.facebook_uid}/picture?type=normal"
+  .span4
+    %h3= user.name
+    %h4= user.student_id
