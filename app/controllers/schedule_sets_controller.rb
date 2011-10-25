@@ -1,0 +1,2 @@
+class ScheduleSetsController < ApplicationController
+end
