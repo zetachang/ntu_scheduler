@@ -6,7 +6,7 @@ class SchedulesController < ApplicationController
       user = User.find_by_facebook_uid(params[:fb_uid])
       if user
         if user.schedule
-          render :partial => "schedules/show", :locals => {:schedule => schedule}
+          render :partial => "schedules/show", :locals => {:schedule => user.schedule}
         else
           msg = "Schedule Unretrieveable."
           render :partial => "shared/alert", :locals => {:msg => msg, :type => "alert"}, :status => :unprocessable_entity
