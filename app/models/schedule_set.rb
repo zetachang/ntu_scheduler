@@ -1,7 +1,8 @@
 require "securerandom"
 
 class ScheduleSet < ActiveRecord::Base
-  has_many :schedule
+  has_many :schedules, :through => :settings
+  has_many :settings
 
   validates_uniqueness_of :permalink
 
