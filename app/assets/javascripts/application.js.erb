@@ -9,3 +9,13 @@
 //= require jquery-ui
 //= require bootstrap
 //= require_tree .
+
+$(function() { 
+  FB.init({
+    appId  : <%= Facebook::APP_ID %>,
+    status : true, // check login status
+    cookie : true, // enable cookies to allow the server to access the session
+    xfbml  : true, // parse XFBML
+    oauth  : true // enable OAuth 2.0
+  });
+});
