@@ -26,8 +26,7 @@ end
 gem 'haml-rails', "~> 0.3.4"
 gem 'jquery-rails'
 
-# Use unicorn as the web server
-# gem 'unicorn'
+gem 'thin', "~> 1.2.11"
 
 # Deploy with Capistrano
 # gem 'capistrano'
