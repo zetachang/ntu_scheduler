@@ -5,10 +5,42 @@ $ ->
   enableFormElements = (form) ->
     form.find('input, button, textarea, a').each ->
       $(this).prop("disabled", false)
-    
-  $('#suggest_form').append('<input type="hidden" name="fb_uid">')
-  disableFormElements $('#suggest_form')
-
+  
+  #Searching friends' schedule field and autocomplete
+  if $('#fb_suggest').length > 0
+    console.log "Good Job"
+    $('#suggest_form').append('<input type="hidden" name="fb_uid">')
+    disableFormElements $('#suggest_form')
+    # Get the friends list from server and populate invisible field
+    $.get "/main/friends", (data) ->
+      friends = data
+      enableFormElements $('#suggest_form')
+      $('#fb_suggest').autocomplete
+        source: friends
+        select: (evt,ui) ->
+          $('input[name="fb_uid"]').attr("value", ui.item.id)
+    # Handle ajax form sending
+    $('#suggest_form')
+    .live("ajax:before", ->
+      $('#result').empty()
+      $('.interaction').empty()
+    )
+    .live("ajax:beforeSend", ->
+      disableFormElements $(this).closest('form')
+    )
+    .live("ajax:success",(evt, data, status, xhr)->
+      $('#result').html(xhr.responseText)
+    )
+    .live("ajax:error",(evt, xhr, status, error)->
+      $('.interaction').append(xhr.responseText)  
+    )
+    .live("ajax:complete",(evt, xhr, status)->
+      $('#result').hide()
+      $('#result').fadeIn()
+      $('input[name="fb_uid"]').attr("value","")
+      $('input[name="name"]').attr("value","")
+      enableFormElements $(this).closest('form')
+    )
 
   $modal_block = $('#new_set')
   $modal_block.modal(backdrop:true)
@@ -52,38 +84,16 @@ $ ->
     $('#add_to_set_select').animate opacity:1.0 
   )
   
-  #TODO #add_to_set_form handler
+  #Add to Set Handler
+  $('#add_to_set_form')
+  .live("ajax:before", ->
+    disableFormElements $(this)
+  )
+  .live("ajax:success", ->
+    #ToDo
+  )
+  .live("ajax:error", ->
+    #ToDo
+  )
   
-  #Searching friends' schedule field and autocomplete
-  if $('#fb_suggest').length > 0
-    # Get the friends list from server and populate invisible field
-    $.get "/main/friends", (data) ->
-      friends = data
-      enableFormElements $('#suggest_form')
-      $('#fb_suggest').autocomplete
-        source: friends
-        select: (evt,ui) ->
-          $('input[name="fb_uid"]').attr("value", ui.item.id)
-    # Handle ajax form sending
-    $('#suggest_form')
-    .live("ajax:before", ->
-      $('#result').empty()
-      $('.interaction').empty()
-    )
-    .live("ajax:beforeSend", ->
-      disableFormElements $(this).closest('form')
-    )
-    .live("ajax:success",(evt, data, status, xhr)->
-      $('#result').html(xhr.responseText)
-    )
-    .live("ajax:error",(evt, xhr, status, error)->
-      $('.interaction').append(xhr.responseText)  
-    )
-    .live("ajax:complete",(evt, xhr, status)->
-      $('#result').hide()
-      $('#result').fadeIn()
-      $('input[name="fb_uid"]').attr("value","")
-      $('input[name="name"]').attr("value","")
-      enableFormElements $(this).closest('form')
-    )
-    
+  
