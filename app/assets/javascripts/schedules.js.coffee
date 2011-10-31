@@ -9,38 +9,50 @@ $ ->
   $('#suggest_form').append('<input type="hidden" name="fb_uid">')
   disableFormElements $('#suggest_form')
 
-  $('#new_set').modal(backdrop:true)
+
+  $modal_block = $('#new_set')
+  $modal_block.modal(backdrop:true)
+  
   $('#add_to_set_select').change ->
     value = $(this).val()
     if value == "0"
-      $('#new_set').modal('show')
+      $modal_block.modal('show')
       $('#add_to_set_select').val("")
   
-  $('#create_new_set').click ->
-    $('#new_schedule_set').submit()
-    $('#new_set').modal('hide')
+  $('#create_new_set_btn').click ->
+    $('#create_new_set_form').submit()
+    $modal_block.modal('hide')
 
-	$('#new_schedule_set')
+  #Handle ajax empty set creation, using twipsy to indicate status message
+	$('#create_new_set_form')
 	.live("ajax:before", ->
 	  $('#add_to_set_select').animate opacity:0.5
 	)
-	.live("ajax:success", ->
+	.live("ajax:success", (evt, data, status, xhr)->
 	  $('#add_to_set_select').twipsy
       title: -> 
         "Success"
       trigger:"manual"
       placement: "left"
-      #delayOut: 000
     $('#add_to_set_select').twipsy('show')
     setTimeout (-> $('#add_to_set_select').twipsy('hide')), 1400
+    console.log data
+    $("<option value=\"#{data.id}\">#{data.name}</option>").insertBefore('option[value="0"]')
   )
-  .live("ajax:error", ->
-    console.log "XD"
+  .live("ajax:error", (evt, xhr, status, error)->
+     $('#add_to_set_select').twipsy
+        title: -> 
+          "Error! Try later"
+        trigger:"manual"
+        placement: "left"
+      $('#add_to_set_select').twipsy('show')
+      setTimeout (-> $('#add_to_set_select').twipsy('hide')), 1400
   )
   .live("ajax:complete", ->
     $('#add_to_set_select').animate opacity:1.0 
   )
   
+  #TODO #add_to_set_form handler
   
   #Searching friends' schedule field and autocomplete
   if $('#fb_suggest').length > 0

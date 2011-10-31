@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_one :schedule
+  has_many :schedule_sets
 
   validates_presence_of :name
   validates_presence_of :student_id

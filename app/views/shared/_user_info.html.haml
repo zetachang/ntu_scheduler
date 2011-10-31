@@ -1,18 +1,19 @@
 .user_info.span16
   %h2 #{user.name}'s Schedule
   .fun
-    = select "set", "name", [["國文作業",1], ["系上同好",2], ["Create New Set",0]], {:include_blank => false, :prompt => 'Select a schedule set to add'}, {:id => 'add_to_set_select'}
-    = link_to "Add", "#", :class => "btn success small"
+    - set_list = user.schedule_sets.map{|s| [s.name,s.id]} << ["Create New Set",0]
+    = form_tag add_schedule_user_schedule_set_path(user,user.schedule), :remote => true, :id => 'add_to_set_form' do
+      = select "set", "name", set_list, {:include_blank => false, :prompt => 'Select a schedule set to add'}, {:id => 'add_to_set_select'}
+      = submit_tag "Add", :class => "btn success small"
   
   #new_set.modal.hide.fade
     .modal-header
       %a{:href => '#', :class => 'close'}x
       %h3 Create a new Schedule Set
     .modal-body
-      = form_for ScheduleSet.new, :remote => true do |f|
-        = f.label :name, "Input Set Name:"
+      = form_tag create_empty_user_schedule_sets_path(user,ScheduleSet.new), :remote => true, :id => 'create_new_set_form' do
+        = label_tag :name, "Input Set Name:"
         .input
-          = f.text_field :name
-          -#= f.submit "Submit", :style => 'hide'
+          = text_field_tag :name
     .modal-footer
-      = submit_tag "Create", :class => "btn primary", :id => 'create_new_set'
+      = submit_tag "Create", :class => "btn primary", :id => 'create_new_set_btn'
