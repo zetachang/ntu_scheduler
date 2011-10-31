@@ -1,6 +1,18 @@
-#user_info.span16
-  .span3
-    = image_tag "http://graph.facebook.com/#{user.facebook_uid}/picture?type=normal"
-  .span4
-    %h3= user.name
-    %h4= user.student_id
+.user_info.span16
+  %h2 #{user.name}'s Schedule
+  .fun
+    = select "set", "name", [["國文作業",1], ["系上同好",2], ["Create New Set",0]], {:include_blank => false, :prompt => 'Select a schedule set to add'}, {:id => 'add_to_set_select'}
+    = link_to "Add", "#", :class => "btn success small"
+  
+  #new_set.modal.hide.fade
+    .modal-header
+      %a{:href => '#', :class => 'close'}x
+      %h3 Create a new Schedule Set
+    .modal-body
+      = form_for ScheduleSet.new, :remote => true do |f|
+        = f.label :name, "Input Set Name:"
+        .input
+          = f.text_field :name
+          -#= f.submit "Submit", :style => 'hide'
+    .modal-footer
+      = submit_tag "Create", :class => "btn primary", :id => 'create_new_set'
