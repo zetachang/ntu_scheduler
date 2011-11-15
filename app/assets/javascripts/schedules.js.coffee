@@ -24,12 +24,12 @@ $ ->
     $modal_block.modal('hide')
 
   #Handle ajax empty set creation, using twipsy to indicate status message
-	$('#create_new_set_form')
-	.live("ajax:before", ->
-	  $('#add_to_set_select').animate opacity:0.5
-	)
-	.live("ajax:success", (evt, data, status, xhr)->
-	  $('#add_to_set_select').twipsy
+  $('#create_new_set_form')
+  .live("ajax:before", ->
+    $('#add_to_set_select').animate opacity:0.5
+  )
+  .live("ajax:success", (evt, data, status, xhr)->
+    $('#add_to_set_select').twipsy
       title: -> 
         "Success"
       trigger:"manual"
