@@ -27,6 +27,7 @@ $ ->
   $('#create_new_set_form')
   .live("ajax:before", ->
     $('#add_to_set_select').animate opacity:0.5
+    $('#add_to_set_select').prop("disabled", true)
   )
   .live("ajax:success", (evt, data, status, xhr)->
     $('#add_to_set_select').twipsy
@@ -40,16 +41,17 @@ $ ->
     $("<option value=\"#{data.id}\">#{data.name}</option>").insertBefore('option[value="0"]')
   )
   .live("ajax:error", (evt, xhr, status, error)->
-     $('#add_to_set_select').twipsy
-        title: ->
-          "Error! Try later"
-        trigger:"manual"
-        placement: "left"
-      $('#add_to_set_select').twipsy('show')
-      setTimeout (-> $('#add_to_set_select').twipsy('hide')), 1400
+    $('#add_to_set_select').twipsy
+      title: ->
+        "Error! Try later"
+      trigger:"manual"
+      placement: "left"
+    $('#add_to_set_select').twipsy('show')
+    setTimeout (-> $('#add_to_set_select').twipsy('hide')), 1400
   )
   .live("ajax:complete", ->
     $('#add_to_set_select').animate opacity:1.0
+    $('#add_to_set_select').prop("disabled", false)
   )
   
   #TODO #add_to_set_form handler
