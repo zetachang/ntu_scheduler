@@ -30,7 +30,7 @@ $ ->
   )
   .live("ajax:success", (evt, data, status, xhr)->
     $('#add_to_set_select').twipsy
-      title: -> 
+      title: ->
         "Success"
       trigger:"manual"
       placement: "left"
@@ -41,7 +41,7 @@ $ ->
   )
   .live("ajax:error", (evt, xhr, status, error)->
      $('#add_to_set_select').twipsy
-        title: -> 
+        title: ->
           "Error! Try later"
         trigger:"manual"
         placement: "left"
@@ -49,7 +49,7 @@ $ ->
       setTimeout (-> $('#add_to_set_select').twipsy('hide')), 1400
   )
   .live("ajax:complete", ->
-    $('#add_to_set_select').animate opacity:1.0 
+    $('#add_to_set_select').animate opacity:1.0
   )
   
   #TODO #add_to_set_form handler
