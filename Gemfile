@@ -34,6 +34,7 @@ gem 'thin', "~> 1.2.11"
 group :test, :development do
   gem 'sqlite3'
   gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -41,9 +42,9 @@ group :development do
 end
 
 group :test do
-  gem 'rspec-rails'
   gem 'spork', '~> 0.9.0.rc'
   gem 'watchr'
   gem 'shoulda-matchers'
+  # when use spork, you have to require factory_girl manually
   gem 'factory_girl_rails', :require => false
 end
