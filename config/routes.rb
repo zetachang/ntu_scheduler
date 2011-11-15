@@ -1,7 +1,16 @@
 NtuScheduler::Application.routes.draw do
-  resource :users, :only => [:create]
+  
+  resources :users, :only => [:create]
+  resources :schedule_sets, :only => [:create, :destroy, :show] do
+    put 'add_schedule', :on => :member
+    put 'remove_schedule', :on => :member
+    post 'create_empty', :on => :collection
+    post 'add_schedule_to', :on => :collection
+  end
+
   match 'schedules/show_friend' => 'schedules#show_friend' 
   get 'main/friends' => 'main#friends'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

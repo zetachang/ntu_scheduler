@@ -6,6 +6,7 @@ class ScheduleSet < ActiveRecord::Base
   belongs_to :user
 
   validates_uniqueness_of :permalink
+  validates_presence_of :name
 
   after_create do |ss| 
     begin
