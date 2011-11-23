@@ -1,0 +1,206 @@
+.set_info.span16
+  = link_to "←Back", user_schedule_sets_path(@current_user), :remote => true, "data-type" => "text", :id => 'back_to_list_link'
+  %h2 國文課第六組
+  = link_to "Edit", '#'
+   
+-# Remember to add group users info
+-#- lesson_names = [{:user => User.find(1), :class => Lesson.find(1) },{:user => User.find 1}]
+.span16
+  %table.schedule_set_table.zebra-striped
+    %thead
+      %tr
+        %th#first-column #
+        %th Monday
+        %th Tuesday
+        %th Wednesday
+        %th Thursday
+        %th Friday
+        %th Saturday
+    %tbody
+      %tr
+        %td 1
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+      %tr
+        %td 2
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+      %tr
+        %td 3
+        %td
+        %td 
+          = image_tag "http://graph.facebook.com/zetachang/picture?type=square", :class => 'small_profile', "title" => "David Chang @ 世界經濟導論(博雅302)"
+          = image_tag "http://graph.facebook.com/1057618531/picture?type=square", :class => 'small_profile'
+          = image_tag "http://graph.facebook.com/649512130/picture?type=square", :class => 'small_profile'
+          = image_tag "http://graph.facebook.com/512767504/picture?type=square", :class => 'small_profile'
+          = image_tag "http://graph.facebook.com/745894997/picture?type=square", :class => 'small_profile'
+          .more-block
+            more
+          .more-users.hide.fade.modal
+            .modal-header
+              %a{:href => '#', :class => 'close'}x
+              %h3 7 People has class
+            .modal-body
+              %ul
+                %li
+                  .image_block
+                    .profile
+                      = image_tag "http://graph.facebook.com/zetachang/picture?type=square"
+                    .content
+                      %a{:href => '#'}David Chang 
+                      世界經濟導論(博雅302)
+                %li
+                  .image_block
+                    .profile
+                      = image_tag "http://graph.facebook.com/1737624293/picture?type=square"
+                    .content
+                      %a{:href => '#'}Kakaen Tmt Huang
+                      計算機程式設計(德田204)
+                %li
+                  .image_block
+                    .profile
+                      = image_tag "http://graph.facebook.com/745894997/picture?type=square"
+                    .content
+                      %a{:href => '#'}高子華
+                      普通生物學上(普通401)
+                %li
+                  .image_block
+                    .profile
+                      = image_tag "http://graph.facebook.com/100000012712227/picture?type=square"
+                    .content
+                      %a{:href => '#'}張以成
+                      計算機程式設計(德田204)
+                %li
+                  .image_block
+                    .profile
+                      = image_tag "http://graph.facebook.com/1674265101/picture?type=square"
+                    .content
+                      %a{:href => '#'}古號平
+                      東方神秘力量(德田204)      
+                %li
+                  .image_block
+                    .profile
+                      = image_tag "http://graph.facebook.com/745894997/picture?type=square"
+                    .content
+                      %a{:href => '#'}張以成
+                      計算機程式設計(德田204)       
+                %li
+                  .image_block
+                    .profile
+                      = image_tag "http://graph.facebook.com/1666999966/picture?type=square"
+                    .content
+                      %a{:href => '#'}張以成
+                      計算機程式設計(德田204)
+        %td
+        %td
+        %td
+        %td
+      %tr
+        %td 4
+        %td 
+          = image_tag "http://graph.facebook.com/zetachang/picture?type=square", :class => 'small_profile'
+        %td
+          = image_tag "http://graph.facebook.com/zetachang/picture?type=square", :class => 'small_profile'
+        %td
+          = image_tag "http://graph.facebook.com/zetachang/picture?type=square", :class => 'small_profile'
+        %td
+          = image_tag "http://graph.facebook.com/zetachang/picture?type=square", :class => 'small_profile'
+          = image_tag "http://graph.facebook.com/1057618531/picture?type=square", :class => 'small_profile'
+        %td 普通物理學甲上
+        %td
+      %tr
+        %td 5
+        %td 計算機程式設計
+        %td
+        %td 普通物理學甲上
+        %td 健康體適能
+        %td 普通物理學甲上
+        %td
+      %tr
+        %td 6
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+      %tr
+        %td 7
+        %td
+        %td
+        %td 微積分甲上
+        %td
+        %td 微積分甲上
+        %td
+      %tr
+        %td 8
+        %td 國文上
+        %td
+        %td 微積分甲上
+        %td
+        %td 微積分甲上
+        %td
+      %tr
+        %td 9
+        %td 國文上
+        %td 現代文學與文化
+        %td
+        %td 路易斯名著選讀
+        %td
+        %td
+      %tr
+        %td 10
+        %td 國文上
+        %td 現代文學與文化
+        %td
+        %td 路易斯名著選讀
+        %td
+        %td
+      %tr
+        %td 11
+        %td 微積分甲上
+        %td 現代文學與文化
+        %td
+        %td 路易斯名著選讀
+        %td
+        %td
+      %tr
+        %td 12
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+      %tr
+        %td 13
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+      %tr
+        %td 14
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td
+      %tr
+        %td 15
+        %td
+        %td
+        %td
+        %td
+        %td
+        %td

@@ -1,3 +1,69 @@
-// Place all the styles related to the schedule_sets controller here.
-// They will automatically be included in application.css.
-// You can use Sass here: http://sass-lang.com/
+@import "base"
+.set_info
+  border-bottom: 1px solid #bbb
+  margin-bottom: 13px
+  h2
+    display: inline-block
+.schedule_set_table
+  @extend .table_fixed
+  td
+    padding: 5px 1px 2px 1px
+    text-align: left
+    
+.framed_img
+  border: 2px solid #fff
+  +border-radius(5px)
+  +box-shadow(#ddd 1px 1px 1px)
+
+.small_profile
+  @extend .framed_img
+  height: 30px
+  width: 30px
+  padding: 0px
+  vertical-align: middle
+
+.small_icon
+  display:inline
+
+.more-users
+  width: 400px
+  ul
+    list-style: none  
+    li
+      margin-bottom: 12px
+    .image_block
+      .profile
+        float: left
+        height: 50px
+      .content
+        a
+          display: block
+        display: table-cell
+        padding-left: 11px
+        padding-top: 5px
+        height: 50px
+        line-height: 20px
+      +legacy-pie-clearfix
+  .modal-body
+    height: 450px
+    overflow: auto
+  img
+    @extend .framed_img
+.more-block
+  margin-left: 1px
+  padding-left: 1px
+  padding-right 1px
+  height: 30px
+  width: 30px
+  line-height: 30px
+  color: white
+  background-color: #bbb
+  display: inline-block
+  +text-shadow(rgba(black,0.4) -1px -1px 2px)
+  +border-radius(4px)
+  +box-shadow(rgba(black,0.4) 0 0 3px)
+  &:hover
+    background-color: #888
+    color: #fff
+    cursor: pointer
+    +text-shadow(rgba(170,170,170,0.4) -1px -1px 1px)

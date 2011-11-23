@@ -13,10 +13,6 @@
   margin-bottom: 13px
 
 table.schedule
-  table-layout: fixed
-  th, td
+  @extend .table_fixed
+  td
     text-align: center
-  th#first-column
-    width: 35px
-    // Override the damn bootstrap style to avoid webkit width bug
-    padding: 0

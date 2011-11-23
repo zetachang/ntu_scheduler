@@ -1,0 +1,9 @@
+- if sets
+  %table#sets_table.zebra-striped
+    - sets.each do |set|
+      %tr
+        %td= link_to set.name, [@current_user, set], :remote => true, :class => 'show_set_link', "data-type" => 'text'
+        %td= link_to "Delete", [@current_user, set], :method => 'delete'
+- else
+  %h3 No Set Created Currently
+  = link_to "Create New One", create_empty_user_schedule_sets_path(current_user, ScheduleSet.new)

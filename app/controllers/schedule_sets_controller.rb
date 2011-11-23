@@ -1,13 +1,18 @@
 #encoding: UTF-8
 class ScheduleSetsController < ApplicationController
   before_filter :is_owner
-
+  
   private
   def is_owner
-    raise if not params[:user_id] || params[:user_id] != current_user.id
+    raise current_user.to_yaml if (not params[:user_id]) || params[:user_id] != current_user.id.to_s
   end
 
   public
+  
+  def index
+    @sets = current_user.schedule_sets
+    render :partial => 'index', :locals => {:sets => @sets}
+  end
   
   def create_empty
     schedule_set = ScheduleSet.new(:name => params[:name],:user_id => params[:user_id])
@@ -63,15 +68,13 @@ class ScheduleSetsController < ApplicationController
 
   def show
     echo = { :status => "ERROR" }
-
-    @schedule_set = ScheduleSet.includes(:schedules => [:user, {:days => :lessons}])
-                               .find(:first, params[:id])
-    if @schedule_set.nil? || @schedule_set.user.id != params[:user_id]
+    @schedule_set = current_user.schedule_sets.includes(:schedules => [:user, {:days => :lessons}])
+                    .find(params[:id])
+    if @schedule_set.nil?
       echo[:message] << t("schedule_sets.no_schedule_set") 
     else
       echo[:status] = "SUCCESS"
     end
-      
     render :partial => "schedule_sets/show", :locals => {:schedule_sets => @schedule_sets}
   end
 

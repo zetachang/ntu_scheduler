@@ -1,7 +1,7 @@
 NtuScheduler::Application.routes.draw do
   
   resources :users, :only => [:create] do
-    resources :schedule_sets, :only => [:create, :destroy, :show] do
+    resources :schedule_sets, :only => [:index, :create, :destroy, :show] do
       put 'add_schedule', :on => :member
       put 'remove_schedule', :on => :member
       post 'create_empty', :on => :collection
