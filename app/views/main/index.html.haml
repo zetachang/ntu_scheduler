@@ -6,14 +6,14 @@
   %li
     = link_to "My Schedule Set", "#schedule_set"
 .pill-content
-  #friends
-    .row
-      .span16
-        = render "schedules/show_friends"
   #my_schedule.active
     .row
       .span16
         = render :partial =>"schedules/show", :locals => {:schedule => @schedule}
+  #friends
+    .row
+      .span16
+        = render "schedules/show_friends"
   #schedule_set
     .row
       .span16
