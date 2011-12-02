@@ -16,10 +16,9 @@ $ ->
   )
   .live("ajax:success", (evt, data, status, xhr)->
     $('#schedule_set').html(data)
-    # Error handline missed
   )
   .live("ajax:error", (evt, xhr, status, error)->
-    # Show some error
+    #TODO: show some error
   )
   .live("ajax:complete", ->
     $('#schedule_set').animate opacity:1
@@ -32,10 +31,9 @@ $ ->
   )
   .live("ajax:success", (evt, data, status, xhr)->
     $('#schedule_set').html(data)
-    # Error handline missed
   )
   .live("ajax:error", (evt, xhr, status, error)->
-    # Show some error
+    #TODO: show some error
   )
   .live("ajax:complete", ->
     $('#schedule_set').animate opacity:1

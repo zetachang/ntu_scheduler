@@ -8,5 +8,7 @@ $ ->
         $('#schedule_set').html(data)
       complete: ->
         $('#schedule_set').animate opacity:1.0
+      error: ->
+        #TODO: error handler
     )
   )
