@@ -3,13 +3,15 @@ $ ->
     placement:"left"
     live:true
   )
+
   $('.more-block').live "click", ->
     if $(this).data("more")
       $(this).data("more").modal("show")
     else
       $(this).data("more",$(this).siblings(".more-users"))
       $(this).data("more").modal("show")
-  $('.show_set_link')
+
+  $('#show_set_link')
   .live("ajax:beforeSend", ->
     # hide and remove the current sets list
     $('#schedule_set').animate opacity:0.5
