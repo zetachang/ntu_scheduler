@@ -12,7 +12,7 @@ $ ->
   $('#add_to_set_form')
   .live("ajax:success",(evt, data, status, xhr)->
     $button = $(this).find('input[type="submit"]')
-    $button.twipsy
+    $button.data('twipsy', null).twipsy
       title: ->
         data.message
       trigger:"manual"
@@ -20,9 +20,9 @@ $ ->
     $button.twipsy('show')
     setTimeout (-> $button.twipsy('hide')), 1400
   )
-  .live("ajax:error",(evt, xhr, status, error)->  
+  .live("ajax:error",(evt, xhr, status, error)->
     $button = $(this).find('input[type="submit"]')
-    $button.twipsy
+    $button.data('twipsy', null).twipsy
       title: ->
         "Error! Try later"
       trigger:"manual"
@@ -53,7 +53,7 @@ $ ->
     $('#add_to_set_select').prop("disabled", true)
   )
   .live("ajax:success", (evt, data, status, xhr)->
-    $('#add_to_set_select').twipsy
+    $('#add_to_set_select').data('twipsy', null).twipsy
       title: ->
         "Success"
       trigger:"manual"
@@ -63,13 +63,13 @@ $ ->
     $("<option value=\"#{data.id}\">#{data.name}</option>").insertBefore('option[value="0"]')
   )
   .live("ajax:error", (evt, xhr, status, error)->
-    $('#add_to_set_select').twipsy
+    $('#add_to_set_select').data('twipsy', null).twipsy
       title: ->
         "Error! Try later"
       trigger:"manual"
       placement: "left"
     $('#add_to_set_select').twipsy('show')
-    setTimeout (-> $('#add_to_set_select').twipsy('hide')), 1400
+    setTimeout (-> $('#add_to_set_select').twipsy('hide') .data('twispy', null)), 1400
   )
   .live("ajax:complete", ->
     $('#add_to_set_select').animate opacity:1.0

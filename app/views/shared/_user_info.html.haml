@@ -3,7 +3,7 @@
   .fun
     - set_list = current_user.schedule_sets.map{|s| [s.name,s.id]} << ["Create New Set",0]
     = form_tag add_schedule_to_schedule_sets_path, :remote => true, :id => 'add_to_set_form' do
-      = select "schedule_set", "id", set_list, {:include_blank => false, :prompt => 'Select a schedule set to add'}, {:id => 'add_to_set_select'}
+      = select "schedule_set", "id", set_list, {:include_blank => false, :prompt => 'Select a schedule set to add'}, :id => 'add_to_set_select'
       = hidden_field_tag "schedule_id", user.schedule.id 
       = submit_tag "Add", :class => "btn success small", :disable_with => "Adding..."
   
