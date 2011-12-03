@@ -11,7 +11,7 @@ $ ->
       $(this).data("more",$(this).siblings(".more-users"))
       $(this).data("more").modal("show")
 
-  $('#show_set_link')
+  $('.show_set_link')
   .live("ajax:beforeSend", ->
     # hide and remove the current sets list
     $('#schedule_set').animate opacity:0.5
@@ -39,4 +39,20 @@ $ ->
   )
   .live("ajax:complete", ->
     $('#schedule_set').animate opacity:1
+  )
+
+  $('.delete_set')
+  .live("ajax:beforeSend", ->
+    $('#schedule_set').animate opacity:0.5
+  )
+  .live("ajax:success", (data) ->
+    $(this).closest('tr').hide(->
+      $(this).remove()
+    )
+  )
+  .live("ajax:error", ->
+    #TODO: show some error
+  )
+  .live("ajax:complete", ->
+    $('#schedule_set').animate opacity:1.0
   )
