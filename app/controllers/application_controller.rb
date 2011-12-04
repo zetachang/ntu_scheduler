@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  #rescue_from Exception, :with => :unknown_error #if Rails.env.production?
+  rescue_from Exception, :with => :unknown_error #if Rails.env.production?
   before_filter :validate_session
 
   protect_from_forgery
