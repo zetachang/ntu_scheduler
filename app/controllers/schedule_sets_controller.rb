@@ -8,37 +8,14 @@ class ScheduleSetsController < ApplicationController
   def create_empty
     schedule_set = ScheduleSet.new(:name => params[:name], :user_id => current_user.id)
     if schedule_set.save
-      render :json => schedule_set
+      render :json => { :status => "SUCCESS", :id => schedule_set.id, :name => schedule_set.name }
     else
-      render :nothing => true, :status => :unprocessable_entity
+      render :json => { :status => "INVALID", :errors => schedule_set.errors.full_messages }
     end
   end
   
   def create
-    echo = { :status => "ERROR", :message => []}
-    logger.debug params
-
-    @schedule_set = ScheduleSet.new(:name => params[:name], :user_id => current_user) 
-    schedule_ids = params[:schedule_ids] ? JSON.parse(params[:schedule_ids]) : []
-    schedule_ids.each do |id|
-      s = Schedule.find(:first, id)
-      if s.nil?
-        echo[:message] << t("schedule.no_schedule")
-        break;
-      end
-      @schedule_set.schedules << s
-    end
-    if @schedule_set.invalid?
-      #TODO: i18n attributes
-      echo[:message] = echo[:message] | @schedule_set.errors.to_a
-    else
-      @schedule_set.save!
-      echo[:status] = "SUCCESS"
-    end
-
-    respond_to do |format|
-      format.json { render :json => echo }
-    end
+    #TODO: implement
   end
 
   def destroy 
