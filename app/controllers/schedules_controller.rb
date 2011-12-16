@@ -1,6 +1,11 @@
 class SchedulesController < ApplicationController
   def show
   end
+
+  def show_self
+    render :partial => "schedules/show", :locals => {:schedule => current_user.schedule}
+  end
+
   def show_friend
     if current_friends.find{|f| f["id"] == params[:fb_uid]}
       user = User.find_by_facebook_uid(params[:fb_uid])

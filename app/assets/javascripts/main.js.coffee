@@ -1,14 +1,15 @@
 $ ->
-  $('a[href="#schedule_set"]').click(->
-    $.ajax(
-      url : "/schedule_sets"
-      beforeSend: ->
-        $('#schedule_set').animate opacity:0.5
-      success: (data) ->
-        $('#schedule_set').html(data)
-      complete: ->
-        $('#schedule_set').animate opacity:1.0
-      error: ->
-        #TODO: error handler
-    )
+
+  # Reload the whole content container
+  $('.content_link').live('click', (e) ->
+    e.preventDefault()
+    $content = $('#content_container')
+    $content.html('')
+    $content.append('<img src="/assets/spinner.gif"></img>')
+    $.get($(this).attr("href"), (data) ->
+      console.log(data)
+      $('#content_container').html(data)
+    ).error ->
+      #TODO: error handler
   )
+
