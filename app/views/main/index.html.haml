@@ -1,4 +1,10 @@
-#content_container
-  .row
-    .span16
-      = render :partial =>"schedules/show", :locals => {:schedule => @schedule}
+.row
+  #header.span16
+    .logo NTU Scheduler
+    = form_tag url_for(:controller => "schedules", :action => 'show_friend'), {:remote => true, :method => :post, :id => 'suggest_form', "data-type" => 'text'} do
+      .search_icon
+        .icon
+      = text_field_tag "name", nil, :placeholder => "Find friend's schedule", :id =>'fb_suggest', :class => 'span10'
+
+#content.span16
+  = render :partial =>"schedules/show", :locals => {:schedule => @schedule}
