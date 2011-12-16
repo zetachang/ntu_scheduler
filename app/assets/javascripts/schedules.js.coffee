@@ -88,6 +88,19 @@ $ ->
         source: friends
         select: (evt,ui) ->
           $('input[name="fb_uid"]').attr("value", ui.item.id)
+      # Overwrite render item function to insert small icon
+      $('#fb_suggest').data('autocomplete')._renderItem = (ul, item) ->
+        fb_profile = "http://graph.facebook.com/" + item.id + "/picture?type=square"
+        $("<li></li>")
+        .data("item.autocomplete", item)
+        .append('<a>' + '<img src="' + fb_profile + '">' + "<div class='value'>" + item.value +  "</div>" + '</a>')
+        .appendTo(ul)
+      # Overwrite render menu function to limit the result
+      $('#fb_suggest').data('autocomplete')._renderMenu = ( ul, items ) ->
+        self = this
+        $.each items, ( index, item ) ->
+          if index < 10
+            self._renderItem( ul, item )
     # Handle ajax form sending
     $('#suggest_form')
     .live("ajax:before", ->
