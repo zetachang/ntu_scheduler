@@ -1,20 +1,4 @@
-%ul.pills{"data-pills" => "pills"}
-  %li.active
-    = link_to "My Schedule", "#my_schedule"
-  %li
-    = link_to "Friends' Schedules", "#friends"
-  %li
-    = link_to "My Schedule Set", "#schedule_set"
-.pill-content
-  #my_schedule.active
-    .row
-      .span16
-        = render :partial =>"schedules/show", :locals => {:schedule => @schedule}
-  #friends
-    .row
-      .span16
-        = render "schedules/show_friends"
-  #schedule_set
-    .row
-      .span16
-        = render :partial =>"schedule_sets/index", :locals => {:sets => @sets}
+#content_container
+  .row
+    .span16
+      = render :partial =>"schedules/show", :locals => {:schedule => @schedule}
