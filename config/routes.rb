@@ -1,11 +1,8 @@
 NtuScheduler::Application.routes.draw do
   
   resources :users, :only => [:create]
-  resources :schedule_sets, :only => [:index,:create, :destroy, :show] do
-    put 'add_schedule', :on => :member
-    put 'remove_schedule', :on => :member
-    post 'create_empty', :on => :collection
-    post 'add_schedule_to', :on => :collection
+  resources :schedule_sets, :only => [:index, :destroy, :show] do
+    post 'create_when_compare', :on => :collection
   end
 
   match 'schedules/show_friend' => 'schedules#show_friend' 
