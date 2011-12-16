@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-[:raincole, :zeta].each do |n|
+[:raincole, :zeta,:user1,:user2,:user3,:user4].each do |n|
   user = Factory(n)
   schedule = Factory(:schedule, :user => user)
   schedule.load_from_eportfolio(user.student_id)

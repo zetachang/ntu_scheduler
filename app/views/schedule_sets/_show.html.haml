@@ -1,0 +1,46 @@
+.set_info.span16
+  = link_to "←Back", schedule_sets_path, :remote => true, "data-type" => "html", :id => 'back_to_list_link'
+  %h2= schedule_set.name
+  = link_to "Edit", '#'
+
+- hash = get_info_hash(schedule_set)
+.span16
+  %table.schedule_set_table
+    %thead
+      %tr
+        %th#first-column #
+        %th Monday
+        %th Tuesday
+        %th Wednesday
+        %th Thursday
+        %th Friday
+        %th Saturday
+    %tbody
+      - (0...15).each do |time|
+        %tr
+          %td= time + 1
+          - (0...6).each do |day|
+            - if hash[day][time].empty?
+              %td
+            - else
+              %td
+                - hash[day][time].slice(0..1).each do |lesson|
+                  = image_tag "http://graph.facebook.com/#{lesson[:user].facebook_uid}/picture?type=square",
+                    :class => 'small_profile', "title" => "#{lesson[:user].name} @ #{lesson[:name]}" + ("(#{lesson[:location]})" if lesson[:location]).to_s
+                - if hash[day][time].size > 2
+                  .more-block
+                    = "#{hash[day][time].size - 2}+"
+                  .more-users.hide.fade.modal
+                    .modal-header
+                      %a{:href => '#', :class => 'close'}x
+                      %h3= "#{hash[day][time].size} people have classes"
+                    .modal-body
+                      %ul
+                        - hash[day][time].each do |lesson|
+                          %li
+                            .image_block
+                              .profile
+                                = image_tag "http://graph.facebook.com/#{lesson[:user].facebook_uid}/picture?type=square"
+                              .content
+                                %a{:href => '#'}= lesson[:user].name 
+                                = "#{lesson[:name]}" + ("(#{lesson[:location]})" if lesson[:location]).to_s

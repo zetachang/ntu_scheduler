@@ -1,8 +1,7 @@
 class MainController < ApplicationController
   def index
-    @user = User.includes(:schedule => {:days => :lessons})
-                .find_by_facebook_uid(@me["id"])
-    @schedule = @user.schedule
+    @schedule = current_user.schedule
+    @sets = current_user.schedule_sets
   end
   
   def friends

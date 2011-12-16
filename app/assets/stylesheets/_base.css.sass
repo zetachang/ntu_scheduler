@@ -19,3 +19,13 @@ $siteWidth: ($gridColumns * $gridColumnWidth) + ($gridGutterWidth * ($gridColumn
 @import "bootstrap/patterns"
 
 @import "jquery-ui"
+
+.table_fixed
+  table-layout: fixed
+  th, td:first-child
+    text-align: center
+  th#first-column
+    width: 35px
+    // Override the damn bootstrap style to avoid webkit width bug
+    padding: 0
+

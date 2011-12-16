@@ -1,3 +1,14 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+$ ->
+  $('a[href="#schedule_set"]').click(->
+    $.ajax(
+      url : "/schedule_sets"
+      beforeSend: ->
+        $('#schedule_set').animate opacity:0.5
+      success: (data) ->
+        $('#schedule_set').html(data)
+      complete: ->
+        $('#schedule_set').animate opacity:1.0
+      error: ->
+        #TODO: error handler
+    )
+  )
