@@ -5,6 +5,7 @@ class ScheduleSetsController < ApplicationController
     render :partial => 'schedule_sets/index', :locals => {:sets => @schedule_sets}
   end
   
+  #IT'S WRONG, DON'T USE IT
   def create_when_compare
     @a = Schedule.find(params[:schedule_a])
     @b = Schedule.find(params[:schedule_b])
