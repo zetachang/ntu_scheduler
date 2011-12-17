@@ -6,6 +6,7 @@ class ScheduleSetsController < ApplicationController
   end
   
   def create_when_compare
+    #XXX: it's slow, you know
     @sets_a = ScheduleSet.joins(:schedules).where(:schedules => {:id => params[:schedule_a]})
     @sets_b = ScheduleSet.joins(:schedules).where(:schedules => {:id => params[:schedule_b]})
     @existed_sets = (@sets_a + @sets_b).uniq
