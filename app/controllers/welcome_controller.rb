@@ -9,7 +9,10 @@ class WelcomeController < ApplicationController
       render
     end
   end
-
+  
+  def show_tutorial
+  end
+  
   def validate_facebook
     if params[:signed_request]
       @oauth = Koala::Facebook::OAuth.new
