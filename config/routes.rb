@@ -62,7 +62,7 @@ NtuScheduler::Application.routes.draw do
   root :to => 'welcome#index'
   # TODO: it's just for test!
   get "tests/display", :as => "test_me"
-  match "main" => "main#index", :as => :main
+  get "main" => "main#index", :as => :main
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
