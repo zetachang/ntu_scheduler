@@ -13,13 +13,12 @@ class UsersController < ApplicationController
     elsif @user.student_id !~ /^\w\d{8}$/
       echo[:message] = t("users.illegal_student_id")
     else
-
       @schedule = Schedule.new()
       @user.schedule = @schedule
       begin
         @schedule.load_from_eportfolio(@user.student_id)
       rescue ScheduleCrawler::NoPublicError
-        # TODO: add a step-by-step tutorial page
+        echo[:redirect_url] = show_tutorial_path
         echo[:message] = t("users.no_public")
       rescue ScheduleCrawler::NoLessonError
         echo[:message] = t("users.no_lesson")
@@ -27,6 +26,7 @@ class UsersController < ApplicationController
         echo[:message] = t("users.illegal_student_id")
       else
         @user.save!
+        echo[:redirect_url] = main_path
         echo[:status] = "SUCCESS"
       end
 
