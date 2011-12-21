@@ -31,8 +31,6 @@ $ ->
     setTimeout (-> $button.twipsy('hide')), 1400
   )
 
-  
-
   $modal_block = $('#new_set')
   $modal_block.modal(backdrop:true)
   
@@ -76,18 +74,20 @@ $ ->
     $('#add_to_set_select').prop("disabled", false)
   )
   
-  #TODO #add_to_set_form handler
   
   #Searching friends' schedule field and autocomplete
   if $('#fb_suggest').length > 0
     # Get the friends list from server and populate invisible field
     $.get "/main/friends", (data) ->
+
       friends = data
       enableFormElements $('#suggest_form')
+
       $('#fb_suggest').autocomplete
         source: friends
         select: (evt,ui) ->
           $('input[name="fb_uid"]').attr("value", ui.item.id)
+
       # Overwrite render item function to insert small icon
       $('#fb_suggest').data('autocomplete')._renderItem = (ul, item) ->
         fb_profile = "http://graph.facebook.com/" + item.id + "/picture?type=square"
@@ -95,12 +95,14 @@ $ ->
         .data("item.autocomplete", item)
         .append('<a>' + '<img src="' + fb_profile + '">' + "<div class='value'>" + item.value +  "</div>" + '</a>')
         .appendTo(ul)
+
       # Overwrite render menu function to limit the result
       $('#fb_suggest').data('autocomplete')._renderMenu = ( ul, items ) ->
         self = this
         $.each items, ( index, item ) ->
           if index < 10
             self._renderItem( ul, item )
+
     # Handle ajax form sending
     $('#suggest_form')
     .live("ajax:before", ->
