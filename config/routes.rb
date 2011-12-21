@@ -4,7 +4,7 @@ NtuScheduler::Application.routes.draw do
   resources :schedule_sets, :only => [:index, :destroy, :show] do
     post 'create_when_compare', :on => :collection
   end
-
+  get 'welcome/tutorial' => 'welcome#show_tutorial', :as => 'show_tutorial'
   get 'schedules/show_friend' => 'schedules#show_friend' 
   get 'schedules/show_self' => 'schedules#show_self'
 
