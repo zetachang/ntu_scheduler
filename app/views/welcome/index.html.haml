@@ -1,4 +1,12 @@
-%div= link_to "test_me", test_me_path
-%div= link_to "test_me_through_ajax", test_me_path, :remote => true
-%div= link_to "main page", main_path
-= render "login_form"
+%h1.big-logo EveryScheduler 課表繽紛樂
+.row
+  .span8.offset4
+    .description
+      好奇朋友選了什麼課嗎？
+      %br
+      來使用課表配對樂
+      %br
+      輕鬆分享你的課表！
+    .note
+      目前僅供國立台灣大學使用，我們會陸續支援其他大學
+    = render "login_form"
