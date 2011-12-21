@@ -3,6 +3,11 @@ class WelcomeController < ApplicationController
   before_filter :validate_facebook
 
   def index
+    if current_user
+      redirect_to main_path
+    else
+      render
+    end
   end
 
   def validate_facebook
