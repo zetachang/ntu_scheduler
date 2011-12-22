@@ -7,5 +7,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require jquery.blockUI
+//= require jquery.form
+//= require utility
 //= require bootstrap
 //= require_tree .
