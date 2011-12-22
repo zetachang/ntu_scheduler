@@ -14,10 +14,14 @@ $ ->
         #TODO: error handler
       complete : ->
         $content = $('#content')
-        #$content.unblock()
+        $content.unblock()
   )()
 
   $('.content_link').live('click', (e) ->
     e.preventDefault()
     $.ajax($(this).attr('href'), UIwrapper.refresh_options)
+  )
+  $('.content_form').live('submit', (e) ->
+    e.preventDefault()
+    $(this).ajaxSubmit(UIwrapper.refresh_options)
   )

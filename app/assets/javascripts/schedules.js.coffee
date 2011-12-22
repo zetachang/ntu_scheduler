@@ -73,8 +73,7 @@ $ ->
     $('#add_to_set_select').animate opacity:1.0
     $('#add_to_set_select').prop("disabled", false)
   )
-  
-  
+
   #Searching friends' schedule field and autocomplete
   if $('#fb_suggest').length > 0
     # Get the friends list from server and populate invisible field
@@ -87,6 +86,7 @@ $ ->
         source: friends
         select: (evt,ui) ->
           $('input[name="fb_uid"]').attr("value", ui.item.id)
+          $('#suggest_form').submit()
 
       # Overwrite render item function to insert small icon
       $('#fb_suggest').data('autocomplete')._renderItem = (ul, item) ->
@@ -103,26 +103,3 @@ $ ->
           if index < 10
             self._renderItem( ul, item )
 
-    # Handle ajax form sending
-    $('#suggest_form')
-    .live("ajax:before", ->
-      $('#result').empty()
-      $('.interaction').empty()
-    )
-    .live("ajax:beforeSend", ->
-      disableFormElements $(this).closest('form')
-    )
-    .live("ajax:success",(evt, data, status, xhr)->
-      $('#result').html(xhr.responseText)
-    )
-    .live("ajax:error",(evt, xhr, status, error)->
-      $('.interaction').append(xhr.responseText)  
-    )
-    .live("ajax:complete",(evt, xhr, status)->
-      $('#result').hide()
-      $('#result').fadeIn()
-      $('input[name="fb_uid"]').attr("value","")
-      $('input[name="name"]').attr("value","")
-      enableFormElements $(this).closest('form')
-    )
-    
