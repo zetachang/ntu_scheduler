@@ -1,4 +1,4 @@
-window.utility = {
+window.Utility = {
   
   delay : (millisecs, func) ->
     setTimeout(func, millisecs)
@@ -14,7 +14,7 @@ window.utility = {
 }
 
 $.extend(true, $.blockUI.defaults,
-  message : utility.spinner()
+  message : Utility.spinner()
   css :
     border : ""
     backgroundColor : 'transparent'
