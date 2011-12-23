@@ -1,7 +1,12 @@
-.alert-message.block-message.info{"data-alert" => "info"}
-  = link_to "x", "#", :class => 'close'
-  %p
-    %strong Oops, your friend is not using this service.
-    Send the invitation by click button below, or ask him or she to sign up for our service.
-    .info-actions
-      = link_to "Send Invitation", "#", :class => 'btn primary'
+.message_container
+  .alert-message.block-message.warning
+    .explain_text
+      %p
+        %strong Oops, your friend is not using this service.
+      %p Send the invitation by click button below, or ask him or she to sign up for our service.
+    = link_to "Send Invitation", "#", :class => 'btn', :id => 'send_invitation', 'friend-uid' => friend_uid
+  .alert-message.block-message.success
+    .explain_text
+      %p
+        %strong 你的邀請已成功送出！
+    = link_to "回到課表", "schedules/show_self", :class => 'btn primary content_link'

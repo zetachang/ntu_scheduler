@@ -16,7 +16,7 @@ class SchedulesController < ApplicationController
         render :partial => "shared/alert", :locals => {:msg => msg, :type => "alert"}
       end
     else
-      render :partial => "send_invitation"
+      render :partial => "send_invitation", :locals => {:friend_uid => params[:fb_uid]}
     end
   end
 end
