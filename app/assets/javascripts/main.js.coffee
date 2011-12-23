@@ -6,7 +6,6 @@ $ ->
     refresh_options :
       beforeSend : ->
         $content.block()
-        console.log($('#content'))
       success : (data) ->
         $content = $('#content')
         $content.html(data)
