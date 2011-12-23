@@ -1,7 +1,7 @@
 .row
   #header.span16
-    .logo NTU Scheduler
-    = form_tag url_for(:controller => "schedules", :action => 'show_friend'), {:remote => true, :method => :post, :id => 'suggest_form', "data-type" => 'text'} do
+    = link_to "NTU Scheduler", "schedules/show_self", :class => 'logo content_link'
+    = form_tag url_for(:controller => "schedules", :action => 'show_friend'), {:method => :get, :id => 'suggest_form', "data-type" => 'text', :class => "content_form"} do
       .search_icon
         .icon
       = text_field_tag "name", nil, :placeholder => "Find friend's schedule", :id =>'fb_suggest', :class => 'span10'
