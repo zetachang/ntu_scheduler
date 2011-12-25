@@ -21,7 +21,10 @@ class Schedule < ActiveRecord::Base
       }
     }
   end
-
+  def to_param
+    permalink
+  end
+  
   after_create do |schedule| 
     begin
       schedule.permalink = SecureRandom.hex(3)
