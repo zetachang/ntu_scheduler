@@ -7,6 +7,7 @@ NtuScheduler::Application.routes.draw do
   get 'welcome/tutorial' => 'welcome#show_tutorial', :as => 'show_tutorial'
   get 'schedules/show_friend' => 'schedules#show_friend' 
   get 'schedules/show_self' => 'schedules#show_self'
+  post 'schedules/compare_me/:id' => 'schedules#compare_me'
 
   get 'main/friends' => 'main#friends'
 

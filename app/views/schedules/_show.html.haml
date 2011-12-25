@@ -5,7 +5,7 @@
 
 .user_info
   %h2 #{schedule.user.name}'s Schedule
-= render :partial => "schedules/control_bar"
+= render :partial => "schedules/control_bar", :locals => {:schedule => schedule}
 
 %table.schedule.zebra-striped
   %thead
