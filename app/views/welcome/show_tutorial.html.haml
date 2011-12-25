@@ -1,0 +1,34 @@
+.page-header
+  %h1
+    你還沒公開你的課表，請依照下面的步驟把課表公開。
+    %small 如果你不想讓非朋友的人找到你的課表，可以選擇公開後，再隱藏起來。
+.row
+  .span8
+    %h3 
+      1. 進入 
+      = link_to "ePortfolio", "http://if163.aca.ntu.edu.tw/eportfolio/", :target => 'blank'
+    = image_tag "instru/1.jpg", :class => 'thumbnail'
+  .span8
+    %h3 
+      2. 登入計中帳號
+    = image_tag "instru/2.jpg", :class => 'thumbnail'
+%hr
+.row
+  .span8
+    %h3
+      3. 點選製作後台
+    = image_tag "instru/3.jpg", :class => 'thumbnail'
+  .span8
+    %h3 
+      4. 勾起『公開我的 ePo』
+    = image_tag "instru/4.jpg", :class => 'thumbnail'
+%hr
+.row
+  .span8
+    %h3 
+      5. 確認送出
+    = image_tag "instru/5.jpg", :class => 'thumbnail'
+  .span8
+    %h3 6. 公開後，重新輸入學號，按下確認
+    = render "login_form"
+    .note 有任何匯入問題，歡迎使用右下角的回報功能

@@ -3,8 +3,16 @@ class WelcomeController < ApplicationController
   before_filter :validate_facebook
 
   def index
+    if current_user
+      redirect_to main_path
+    else
+      render
+    end
   end
-
+  
+  def show_tutorial
+  end
+  
   def validate_facebook
     if params[:signed_request]
       @oauth = Koala::Facebook::OAuth.new
