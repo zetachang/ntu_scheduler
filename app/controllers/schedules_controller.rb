@@ -19,4 +19,13 @@ class SchedulesController < ApplicationController
       render :partial => "send_invitation", :locals => {:friend_uid => params[:fb_uid]}
     end
   end
+
+  def compare_me
+    @schedule_set = ScheduleSet.create_by_two(params[:id], current_user.schedule.id, current_user.id)
+
+    respond_to do |format|
+      format.json { render :json => {:status => "SUCCESS", :schedule_set => @schedule_set.id } }
+    end
+  end
+
 end

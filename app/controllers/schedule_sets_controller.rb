@@ -4,24 +4,6 @@ class ScheduleSetsController < ApplicationController
     @schedule_sets = current_user.schedule_sets
     render :partial => 'schedule_sets/index', :locals => {:sets => @schedule_sets}
   end
-  
-  def create_when_compare
-    #XXX: it's slow, you know
-    @sets_a = ScheduleSet.joins(:schedules).where(:schedules => {:id => params[:schedule_a]})
-    @sets_b = ScheduleSet.joins(:schedules).where(:schedules => {:id => params[:schedule_b]})
-    @existed_sets = (@sets_a + @sets_b).uniq
-
-    if @existed_sets.size == 0
-      @schedule_set = ScheduleSets.create(:name => "Anonymous Set", :user_id => current_user)
-      @schedule_set.schedules << a << b;
-    else
-      @schedule_set = @existed_sets.first
-    end
-
-    respond_to do |format|
-      format.json { render :json => {:status => "SUCCESS", :schedule_set => @schedule.id} }
-    end
-  end
 
   def destroy 
     @schedule_set = current_user.schedule_sets.find(params[:id])
