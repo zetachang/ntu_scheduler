@@ -1,7 +1,8 @@
 $ ->
-  show_success_block = ->
-    $('#send_block').hide()
-    $('#success_block').fadeIn()
+  show_success_block = (response) ->
+    if response?
+      $('#send_block').hide()
+      $('#success_block').fadeIn()
 
   $('#send_invitation').live('click', ->
     friend_id = $(this).attr('friend-uid')
