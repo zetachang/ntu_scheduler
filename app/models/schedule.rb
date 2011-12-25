@@ -4,6 +4,7 @@ class Schedule < ActiveRecord::Base
   has_many :schedule_sets, :through => :settings
   has_many :settings
 
+  validates_uniqueness_of :permalink
   # probably raise:
   # - ScheduleCrawler::NoPublicError
   # -                  HTTPError
@@ -21,4 +22,9 @@ class Schedule < ActiveRecord::Base
     }
   end
 
+  after_create do |schedule| 
+    begin
+      schedule.permalink = SecureRandom.hex(3)
+    end until schedule.save
+  end
 end

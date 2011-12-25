@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111026122151) do
+ActiveRecord::Schema.define(:version => 20111225140333) do
 
   create_table "days", :force => true do |t|
     t.integer  "schedule_id", :null => false
@@ -43,7 +43,10 @@ ActiveRecord::Schema.define(:version => 20111026122151) do
     t.integer  "schedule_set_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "permalink"
   end
+
+  add_index "schedules", ["permalink"], :name => "index_schedules_on_permalink", :unique => true
 
   create_table "settings", :force => true do |t|
     t.integer  "schedule_id",     :null => false
