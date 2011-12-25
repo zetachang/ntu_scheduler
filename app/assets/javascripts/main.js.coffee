@@ -1,15 +1,26 @@
 $ ->
+  window.UIwrapper = (->
+    $content = $('#content')
 
-  # Reload the whole content container
+    # options make $.ajax refresh the #content
+    refresh_options :
+      beforeSend : ->
+        $content.block()
+      success : (data) ->
+        $content = $('#content')
+        $content.html(data)
+      error : ->
+        #TODO: error handler
+      complete : ->
+        $content = $('#content')
+        $content.unblock()
+  )()
+
   $('.content_link').live('click', (e) ->
     e.preventDefault()
-    $content = $('#content_container')
-    $content.html('')
-    $content.append('<img src="/assets/spinner.gif"></img>')
-    $.get($(this).attr("href"), (data) ->
-      console.log(data)
-      $('#content_container').html(data)
-    ).error ->
-      #TODO: error handler
+    $.ajax($(this).attr('href'), UIwrapper.refresh_options)
   )
-
+  $('.content_form').live('submit', (e) ->
+    e.preventDefault()
+    $(this).ajaxSubmit(UIwrapper.refresh_options)
+  )
