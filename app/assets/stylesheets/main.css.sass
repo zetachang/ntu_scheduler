@@ -1,15 +1,11 @@
 #header
   border-bottom: 2px solid #bbb
   .logo
+    +reset-box-model
+    +replace-text-with-dimensions("logo.jpg")
     display: inline-block
-    text-indent: -99999px
-    background: url("logo.jpg") no-repeat
-    font-size: 28px
-    font-weight: bold
     float: left
-    height: 33px
-    padding: 4px
-    width: 230px
+    
   form
     float: left
     position: relative
