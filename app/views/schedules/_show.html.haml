@@ -2,7 +2,11 @@
   - one_day = Array.new(15, "")
   - schedule.days[d].lessons.each { |l| one_day[l.time] = l.name }
   - one_day
-= render :partial => "shared/user_info", :locals => {:user => schedule.user}
+
+.user_info
+  %h2 #{schedule.user.name}'s Schedule
+= render :partial => "schedules/control_bar"
+
 %table.schedule.zebra-striped
   %thead
     %tr
