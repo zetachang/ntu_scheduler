@@ -24,6 +24,3 @@ $ ->
     e.preventDefault()
     $(this).ajaxSubmit(UIwrapper.refresh_options)
   )
-  $('#search_icon').click( ->
-    $(this).closest('form').submit()
-  )
