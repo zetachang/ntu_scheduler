@@ -6,11 +6,13 @@ $ ->
     refresh_options :
       beforeSend : ->
         $content.block()
+        $('.error_msg').html("")
       success : (data) ->
         $content = $('#content')
         $content.html(data)
       error : ->
-        #TODO: error handler
+        $('.error_msg').html("← 出錯囉，點選logo回到我的課表")
+        $('.error_msg').fadeIn()
       complete : ->
         $content = $('#content')
         $content.unblock()
