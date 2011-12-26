@@ -18,7 +18,9 @@ $ ->
 
   $('.content_link').live('click', (e) ->
     e.preventDefault()
-    $.ajax($(this).attr('href'), UIwrapper.refresh_options)
+    extra_options =
+      type: $(this).attr('content-method') || 'get'
+    $.ajax($(this).attr('href'), $.extend({}, UIwrapper.refresh_options, extra_options))
   )
   $('.content_form').live('submit', (e) ->
     e.preventDefault()
