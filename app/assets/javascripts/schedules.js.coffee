@@ -1,8 +1,11 @@
 $ ->
+
+  $('.score_block .num')
   countdownNum = (num) ->
     $('.compare_info i').html("Comparing...")
     counter = 0
     time_interval = num
+    console.log(time_interval)
     clock = (interval) ->
       setTimeout(->
         if counter < num
@@ -32,7 +35,7 @@ $ ->
   )
   .live("ajax:success", (evt, data, status, xhr)->
     $content.html(data)
-    countdownNum(100)
+    countdownNum(parseInt($('.score_block .num').attr('match-score')))
   )
   .live("ajax:error", (evt, xhr, status, error)->
     $('.error_msg').html("← 出錯囉，點選logo回到我的課表")

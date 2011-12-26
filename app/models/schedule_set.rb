@@ -32,4 +32,17 @@ class ScheduleSet < ActiveRecord::Base
     return @schedule_set 
   end
 
+  def match_score
+    score = 0
+    schedules_lessons = self.schedules.map(&:to_a)
+    (0...6).each do |d|
+      (0...15).each do |l|
+        if schedules_lessons.reduce(true) { |memo, s| memo &= s[d][l].present? }
+          score += 1
+        end
+      end
+    end
+    score * 400 / 90
+  end
+
 end
