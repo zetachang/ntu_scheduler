@@ -1,7 +1,4 @@
-- lesson_names = Array.new(6) do |d|
-  - one_day = Array.new(15, "")
-  - schedule.days[d].lessons.each { |l| one_day[l.time] = l.name }
-  - one_day
+- lesson_names = schedule.to_a
 %table.schedule
   %thead
     %tr

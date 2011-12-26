@@ -21,6 +21,15 @@ class Schedule < ActiveRecord::Base
       }
     }
   end
+
+  def to_a
+    lesson_names = Array.new(6) do |d|
+      one_day = Array.new(15, "")
+      self.days[d].lessons.each { |l| one_day[l.time] = l.name }
+      one_day
+    end
+  end
+
   def to_param
     permalink
   end
