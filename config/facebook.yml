@@ -1,8 +1,8 @@
 ---
 facebook: &facebook
-  app_id: 200605363362845
+  app_id: ENV['app_id']
   secret_key: ENV['facebook_key']
-  callback_url: http://apps.facebook.com/everyscheduler/
+  callback_url: http://apps.facebook.com/everyscheduler
   permissions: ""
 
 development:
