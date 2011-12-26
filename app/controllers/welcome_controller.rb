@@ -14,7 +14,6 @@ class WelcomeController < ApplicationController
   end
   
   def validate_facebook
-    p request.headers['User-Agent']
     if params[:signed_request]
       @oauth = Koala::Facebook::OAuth.new
       signed_request = @oauth.parse_signed_request(params[:signed_request])
