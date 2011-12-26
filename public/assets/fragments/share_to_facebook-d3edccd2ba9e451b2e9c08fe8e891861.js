@@ -1,0 +1,1 @@
+((function(){$(function(){return $(".fb_share").live("click",function(){var a;return a=$.parseJSON($(this).attr("data-obj")),FB.ui(a,function(){})})})})).call(this)

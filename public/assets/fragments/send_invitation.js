@@ -1,0 +1,1 @@
+((function(){$(function(){var a;return a=function(a){if(a!=null)return $("#send_block").hide(),$("#success_block").fadeIn()},$("#send_invitation").live("click",function(){var b;return b=$(this).attr("friend-uid"),FB.ui({method:"apprequests",message:"請問你什麼時候有空堂？",to:b},a)})})})).call(this)

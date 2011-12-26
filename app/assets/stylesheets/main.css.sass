@@ -1,9 +1,16 @@
+@import "base"
 #header
   // The border should be 1px rather than 2px
   border-bottom: 1px solid #bbb
   .logo
-    +reset-box-model
-    +replace-text-with-dimensions("logo.jpg")
+    +reset-box-model 
+    +hide-text
+    background:
+      image: image-url("logo.jpg")
+      repeat: no-repeat
+      position: 50% 50%
+    width: 230px
+    height: 40px
     display: inline-block
     float: left
     
