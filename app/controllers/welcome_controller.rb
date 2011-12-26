@@ -14,6 +14,7 @@ class WelcomeController < ApplicationController
   end
   
   def validate_facebook
+    p request.headers['User-Agent']
     if params[:signed_request]
       @oauth = Koala::Facebook::OAuth.new
       signed_request = @oauth.parse_signed_request(params[:signed_request])
@@ -26,7 +27,7 @@ class WelcomeController < ApplicationController
         oauth_dialog
       end
     else 
-      unless request.header['user-agent'] =~ /facebook/
+      unless request.headers['User-Agent'] =~ /facebook/
         validate_session
       end
     end
