@@ -1,5 +1,7 @@
 # encoding: utf-8
 class SchedulesController < ApplicationController
+  skip_before_filter :validate_session, :only => :show
+
   def show
     @schedule = Schedule.find_by_permalink(params[:id])
     render "show_permalink"
