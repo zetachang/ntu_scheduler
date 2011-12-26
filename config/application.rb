@@ -48,7 +48,8 @@ module NtuScheduler
 
     stylesheets_directory = "#{Rails.root}/app/assets/stylesheets"
     #config.assets.precompile << /(^[^_]|\/[^_])[^\/]*/
-    config.assets.precompile << /^([^\/]*\/)*[^_][^\/]*$/
+    #config.assets.precompile << /^([^\/]*\/)*[^_][^\/]*$/
+    config.assets.precompile += ['application.css']
     # if you prefer `.sass` over `.scss`.
     #config.sass.preferred_syntax = :sass
   end

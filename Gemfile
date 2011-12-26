@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0'
+gem 'rails', '~>3.1.0'
 gem 'koala', '~> 1.1.0'
 gem 'nokogiri', '~> 1.5.0'
 gem 'rails-i18n', '~> 0.1.9'
@@ -19,7 +19,7 @@ group :assets do
   gem 'sass-rails', "~> 3.1.0"
   gem 'coffee-rails', "~> 3.1.0"
   gem "compass", "~> 0.12.alpha"
-  gem 'bootstrap-sass', '1.3.0'
+  gem 'bootstrap-sass', "1.3.1"
   gem 'uglifier'
 end
 
