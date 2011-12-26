@@ -11,5 +11,5 @@
         = square_profile(you, :class => 'framed_img hover_blur')
     .score_block.span6
       %h2 配對度 
-      .num 78
+      .num{"match-score" => schedule_set.match_score}
 = render :partial => 'schedule_sets/set_table', :locals => {:schedule_set => schedule_set}
