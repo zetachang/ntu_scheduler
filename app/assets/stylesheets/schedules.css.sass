@@ -5,6 +5,26 @@
     font-size: 20px
     margin-left: 10px
 
+.compare_info
+  margin-bottom: 10px
+  img
+    display: inline-block
+    vertical-align: middle
+    margin-left: 5px
+    margin-right: 5px
+  .span6
+    text-align: center
+  h2
+    display: inline-block
+    +simple_vertical_center(54px)
+  span
+    font-size: 30px
+    +simple_vertical_center(54px)
+    .num
+      font-style: italic
+      font-weight: bold
+      font-size: 120%
+
 .control_bar
   display: inline-block
   
@@ -22,9 +42,15 @@ table.schedule
     height: 50px
     padding-left: 10px
 
+.compare_button
+  display: inline-block
+  vertical-align: top
+  margin-top: 17px
+  margin-left: 10px
 .share_button
   position: relative
   img
+    cursor: pointer
     position: absolute
     right: 0
     top: -30px

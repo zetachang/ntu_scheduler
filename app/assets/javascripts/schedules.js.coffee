@@ -1,14 +1,30 @@
 $ ->
+  $content = $('#content')
+  $('.compare_button a')
+  .live("ajax:beforeSend", ->
+    $content.block()
+  )
+  .live("ajax:success", (evt, data, status, xhr)->
+    $content.html(data)
+  )
+  .live("ajax:error", (evt, xhr, status, error)->
+    #The fucking error handling is missed!!
+    alert("Opps")
+  )
+  .live("ajax:complete", ->
+    $content.unblock()
+  )
+  
   disableFormElements = (form) ->
     form.find('input, button, textarea, a').each ->
       $(this).prop("disabled", true)
+    form.find('#search_icon').hide()
   enableFormElements = (form) ->
     form.find('input, button, textarea, a').each ->
       $(this).prop("disabled", false)
-    
+    form.find('#search_icon').show()
   $('#suggest_form').append('<input type="hidden" name="fb_uid">')
   disableFormElements $('#suggest_form')
-
   #Searching friends' schedule field and autocomplete
   if $('#fb_suggest').length > 0
     # Get the friends list from server and populate invisible field

@@ -1,0 +1,14 @@
+- me = current_user
+- you = schedule_set.schedules.map{|s| s.user}.find{|u| u != me}
+.compare_info
+  .row
+    .span6
+      %h2= me.name
+      = square_profile(me, :class => 'framed_img')
+    %span.span4
+      配對度: 
+      %span.num 78
+    .span6
+      = square_profile(you, :class => 'framed_img')
+      %h2= you.name
+= render :partial => 'schedule_sets/set_table', :locals => {:schedule_set => schedule_set}
