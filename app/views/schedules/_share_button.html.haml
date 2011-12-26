@@ -1,0 +1,11 @@
+.share_button
+  -# ToFix the picture url aftet pushing to production
+  %a{:href=>'#'}
+    - post_obj = {:method => 'feed',
+      :redirect_uri => root_url,
+      :link => schedule_url(schedule), 
+      :picture => "http://fbrell.com/f8.jpg",
+      :name => "#{schedule.user.name} 的課表- 課表配對樂",
+      :caption => "好奇朋友選了什麼課嗎",
+      :description => "使用課表配對樂，輕鬆分享你的課表！"}
+    = image_tag "facebook_share_icon.gif", :class => 'fb_share', "data-obj" => post_obj.to_json
