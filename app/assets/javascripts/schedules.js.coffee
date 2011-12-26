@@ -2,7 +2,7 @@ $ ->
 
   $('.score_block .num')
   countdownNum = (num) ->
-    $('.compare_info i').html("Comparing...")
+    $('.compare_info i').html("配對中……")
     counter = 0
     time_interval = num
     console.log(time_interval)
@@ -24,7 +24,7 @@ $ ->
         else
           $('.score_block .num').animate({"font-size": "110px"})
           $('.score_block .num').animate({"font-size": "90px"})
-          $('.compare_info i').html("Compared!")
+          $('.compare_info i').html("完成！")
       , interval)
     clock(time_interval)
   
