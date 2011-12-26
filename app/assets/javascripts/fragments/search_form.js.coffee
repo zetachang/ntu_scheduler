@@ -27,6 +27,7 @@ $ ->
           $('input[name="fb_uid"]').attr("value", ui.item.id)
           $('#suggest_form').submit()
           $('#fb_suggest').attr('value', "")
+          $('#fb_suggest').blur()
           return false
         delay: 10
 

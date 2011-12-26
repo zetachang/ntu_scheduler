@@ -7,7 +7,7 @@
       %a.logo.content_link{:href => "schedules/show_self"}
     .error_msg
     = form_tag url_for(:controller => "schedules", :action => 'show_friend'), {:method => :get, :id => 'suggest_form', "data-type" => 'text', :class => "content_form"} do
-      = text_field_tag "name", nil, :placeholder => "看看朋友們的課表！", :id =>'fb_suggest', :class => 'span10'
+      = text_field_tag "name", nil, :placeholder => "朋友們都上些什麼課呢？", :id =>'fb_suggest', :class => 'span10'
       #search_icon
   #content.span16
     = render :partial =>"schedules/show", :locals => {:schedule => @schedule}
