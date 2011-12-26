@@ -20,7 +20,6 @@ $ ->
     e.preventDefault()
     extra_options =
       type: $(this).attr('content-method') || 'get'
-    console.log($.extend({}, UIwrapper.refresh_options, extra_options))
     $.ajax($(this).attr('href'), $.extend({}, UIwrapper.refresh_options, extra_options))
   )
   $('.content_form').live('submit', (e) ->
