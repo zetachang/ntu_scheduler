@@ -1,15 +1,11 @@
 #header
   border-bottom: 2px solid #bbb
   .logo
+    +reset-box-model
+    +replace-text-with-dimensions("logo.jpg")
     display: inline-block
-    text-indent: -99999px
-    background: url("logo.jpg") no-repeat
-    font-size: 28px
-    font-weight: bold
     float: left
-    height: 33px
-    padding: 4px
-    width: 230px
+    
   form
     float: right
     position: relative
@@ -26,4 +22,27 @@
       opacity: 0.3
       width: 22px
       height: 21px
+
+#content
+  margin-top: 10px
   
+.user_info
+  height: 50px
+  display: inline-block
+  padding-bottom: 5px
+  margin-bottom: 5px
+  margin-top: 5px
+  h2
+    display: inline-block
+    margin-left: 10px
+    +simple_vertical_center(50px)
+  img
+    display: inline-block
+    float: left
+    +legacy-pie-clearfix
+
+.fb-like
+  position: static
+  vertical-align: top
+  margin-top: 22px
+  margin-left: 10px
