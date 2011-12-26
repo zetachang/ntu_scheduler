@@ -24,7 +24,8 @@ class SchedulesController < ApplicationController
 
   def compare_me
     @schedule_set = ScheduleSet.create_by_two(params[:id], current_user.schedule.id, current_user.id)
-    render :partial => 'schedule_sets/compare_show', :locals => {:schedule_set => @schedule_set}
+    @you = Schedule.find_by_permalink(params[:id]).user
+    render :partial => 'schedule_sets/compare_show', :locals => {:schedule_set => @schedule_set,:you => @you}
     #respond_to do |format|
     #  format.json { render :json => {:status => "SUCCESS", :schedule_set => @schedule_set.id } }
     #end

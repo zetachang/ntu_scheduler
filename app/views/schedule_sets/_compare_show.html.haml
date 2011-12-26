@@ -1,15 +1,14 @@
-- me = current_user
-- you = schedule_set.schedules.map{|s| s.user}.find{|u| u != me}
 .compare_info
   .row
     .span6.offset2
       %h2
         %i Comparing
       %br
-      = square_profile(me, :class => 'framed_img') 
+      %a{:href => show_self_path, :class =>'content_link'}
+        = square_profile(current_user, :class => 'framed_img hover_blur') 
       = image_tag "and.png"
-      = square_profile(you, :class => 'framed_img')
-      -#= image_tag "info_border.png"
+      %a{:href => show_friend_path({"fb_uid" => you.facebook_uid}), :class =>'content_link'}
+        = square_profile(you, :class => 'framed_img hover_blur')
     .score_block.span6
       %h2 配對度 
       .num 78
