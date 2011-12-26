@@ -1,6 +1,6 @@
 .span16
   = form_tag url_for(:controller => "schedules", :action => 'show_friend'), {:remote => true, :method => :post, :id => 'suggest_form', "data-type" => 'text'} do
-    = text_field_tag "name", nil, :placeholder => 'Enter search term...', :id =>'fb_suggest', :class => 'span10'
+    = text_field_tag "name", nil, :placeholder => '搜尋朋友的課表', :id =>'fb_suggest', :class => 'span10'
     = submit_tag "Search", :class => "btn"
 .interaction.span11
 #result

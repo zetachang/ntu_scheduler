@@ -2,9 +2,9 @@
   .alert-message.block-message.warning#send_block
     .explain_text
       %p
-        %strong Oops, your friend is not using this service.
-      %p Send the invitation by click button below, or ask him or she to sign up for our service.
-    = link_to "Send Invitation", "#", :class => 'btn', :id => 'send_invitation', 'friend-uid' => friend_uid
+        %strong Oops
+        你的朋友還沒開始使用這個服務，你可以邀請他來一起使用 ＝）
+    = link_to "邀請", "#", :class => 'btn', :id => 'send_invitation', 'friend-uid' => friend_uid
   .alert-message.block-message.success.hidden#success_block
     .explain_text
       %p
