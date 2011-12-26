@@ -4,7 +4,7 @@
     - post_obj = {:method => 'feed',
       :redirect_uri => root_url,
       :link => schedule_url(schedule), 
-      :picture => asset_path("logo.jpg"),
+      :picture => "http://everyscheduler.herokuapp.com"+ asset_path("logo_big.jpg"),
       :name => "#{schedule.user.name} 的課表- 課表配對樂",
       :caption => "好奇朋友選了什麼課嗎",
       :description => "使用課表配對樂，輕鬆分享你的課表！"}

@@ -4,8 +4,8 @@
 
 module Facebook
   CONFIG = YAML.load_file(Rails.root.join("config/facebook.yml"))[Rails.env]
-  APP_ID = CONFIG['app_id']
-  SECRET = ENV['facebook_key']
+  APP_ID = ENV['app_id'] || "195138283911045"
+  SECRET = ENV['facebook_key'] || "12e945a1206842c31fc7c9631d1ef1de"
   CALLBACK_URL = CONFIG['callback_url']
   PERMISSIONS = CONFIG['permissions']
   if Rails.env.test?
