@@ -26,7 +26,8 @@ class WelcomeController < ApplicationController
         oauth_dialog
       end
     else 
-      validate_session
+      unless request.header['user-agent'] =~ /facebook/
+        validate_session
     end
   end
 end
