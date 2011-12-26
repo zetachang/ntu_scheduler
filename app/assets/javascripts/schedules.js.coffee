@@ -35,8 +35,8 @@ $ ->
     countdownNum(100)
   )
   .live("ajax:error", (evt, xhr, status, error)->
-    #The fucking error handling is missed!!
-    alert("Opps")
+    $('.error_msg').html("← 出錯囉，點選logo回到我的課表")
+    $('.error_msg').fadeIn()
   )
   .live("ajax:complete", ->
     $content.unblock()

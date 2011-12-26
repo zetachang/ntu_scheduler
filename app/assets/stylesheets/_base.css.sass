@@ -20,6 +20,11 @@ $siteWidth: ($gridColumns * $gridColumnWidth) + ($gridGutterWidth * ($gridColumn
 
 @import "jquery-ui"
 
+
+=simple_vertical_center($height)
+  height: $height
+  line-height: $height
+
 .table_fixed
   table-layout: fixed
   th, td:first-child
@@ -34,11 +39,12 @@ $siteWidth: ($gridColumns * $gridColumnWidth) + ($gridGutterWidth * ($gridColumn
   border: 3px solid #fff
   +border-radius(5px)
   +box-shadow(#ddd 2px 2px 1px)
-
+.error_msg
+  color: #f00
+  display: inline-block
+  +simple_vertical_center(40px)
 .hover_blur
   &:hover
     +box-shadow(rgba(82, 168, 236, 0.8) 1px 1px 2px)
-=simple_vertical_center($height)
-  height: $height
-  line-height: $height
+
 
