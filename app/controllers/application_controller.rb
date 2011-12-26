@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   rescue_from Exception, :with => :unknown_error if Rails.env.production?
-  before_filter :validate_session
+  before_filter :set_p3p,:validate_session
 
   protect_from_forgery
 
@@ -24,6 +24,10 @@ class ApplicationController < ActionController::Base
       format.js { render :nothing => true, :status =>  500 }
       format.json { render :nothing => true, :status => 500 }
     end
+  end
+
+  def set_p3p
+    response.headers["P3P"]='CP="CAO PSA OUR"'
   end
 
   def validate_session
