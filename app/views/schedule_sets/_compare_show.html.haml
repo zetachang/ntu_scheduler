@@ -1,14 +1,15 @@
-- me = current_user
-- you = schedule_set.schedules.map{|s| s.user}.find{|u| u != me}
 .compare_info
   .row
-    .span6
-      %h2= me.name
-      = square_profile(me, :class => 'framed_img')
-    %span.span4
-      配對度: 
-      %span.num 78
-    .span6
-      = square_profile(you, :class => 'framed_img')
-      %h2= you.name
+    .span6.offset2
+      %h2
+        %i Comparing
+      %br
+      %a{:href => show_self_path, :class =>'content_link'}
+        = square_profile(current_user, :class => 'framed_img hover_blur') 
+      = image_tag "and.png"
+      %a{:href => show_friend_path({"fb_uid" => you.facebook_uid}), :class =>'content_link'}
+        = square_profile(you, :class => 'framed_img hover_blur')
+    .score_block.span6
+      %h2 配對度 
+      .num 78
 = render :partial => 'schedule_sets/set_table', :locals => {:schedule_set => schedule_set}

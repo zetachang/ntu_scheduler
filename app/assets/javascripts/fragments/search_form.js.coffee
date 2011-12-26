@@ -5,7 +5,6 @@ $ ->
   enableFormElements = (form) ->
     form.find('input, button, textarea, a').each ->
       $(this).prop("disabled", false)
-
   $('#fb_suggest').keypress( (e)->
     if(e.which == 13)
       return false
