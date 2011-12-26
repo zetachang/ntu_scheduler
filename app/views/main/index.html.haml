@@ -5,6 +5,7 @@
     %h1.logo
       EveryScheduler
       %a.logo.content_link{:href => "schedules/show_self"}
+    .error_msg
     = form_tag url_for(:controller => "schedules", :action => 'show_friend'), {:method => :get, :id => 'suggest_form', "data-type" => 'text', :class => "content_form"} do
       = text_field_tag "name", nil, :placeholder => "Find friend's schedule", :id =>'fb_suggest', :class => 'span10'
       #search_icon
