@@ -3,5 +3,5 @@
   = render :partial => "schedules/share_button", :locals => {:schedule => schedule}
 - else
   .compare_button
-    = link_to "按一下，開始配對", compare_with_me_path(schedule), :class => 'btn success content_link', "content-method" => 'post'
+    = link_to "按一下，開始配對", compare_with_me_path(schedule), :class => 'btn success',  "data-remote" => true, "data-method" => "post", "data-type" => 'text'
 = render :partial => 'schedules/schedule_table', :locals => {:schedule => schedule}

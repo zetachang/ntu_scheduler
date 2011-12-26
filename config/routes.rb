@@ -5,8 +5,8 @@ NtuScheduler::Application.routes.draw do
     post 'create_when_compare', :on => :collection
   end
   get 'welcome/tutorial' => 'welcome#show_tutorial', :as => 'show_tutorial'
-  get 'schedules/show_friend' => 'schedules#show_friend' 
-  get 'schedules/show_self' => 'schedules#show_self'
+  get 'schedules/show_friend' => 'schedules#show_friend', :as => 'show_friend'
+  get 'schedules/show_self' => 'schedules#show_self', :as => 'show_self'
   get 'schedules/:id' => 'schedules#show', :as => "schedule"
   post 'schedules/compare_me/:id' => 'schedules#compare_me', :as => 'compare_with_me'
   get 'main/friends' => 'main#friends'
