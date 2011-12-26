@@ -28,6 +28,7 @@ class WelcomeController < ApplicationController
     else 
       unless request.header['user-agent'] =~ /facebook/
         validate_session
+      end
     end
   end
 end
