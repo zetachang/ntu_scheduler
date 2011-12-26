@@ -5,7 +5,6 @@ $ ->
     $('.compare_info i').html("配對中……")
     counter = 0
     time_interval = num
-    console.log(time_interval)
     clock = (interval) ->
       setTimeout(->
         if counter < num
