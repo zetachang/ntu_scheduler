@@ -32,6 +32,7 @@ $ ->
   $('.compare_button a')
   .live("ajax:beforeSend", ->
     $content.block()
+    $('.error_msg').html("")
   )
   .live("ajax:success", (evt, data, status, xhr)->
     $content.html(data)
