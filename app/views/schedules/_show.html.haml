@@ -1,4 +1,5 @@
 = render :partial => "shared/user_info", :locals => {:user => schedule.user}
+
 - if current_user == schedule.user
   = render :partial => "schedules/share_button", :locals => {:schedule => schedule}
 - else
