@@ -16,7 +16,7 @@ class SchedulesController < ApplicationController
       if user.schedule
         render :partial => "schedules/show", :locals => {:schedule => user.schedule}
       else
-        msg = "看樣子，你的朋友的課表出了點問題。造成您的困擾，感到十分抱歉，方便的話，用右下角的回報按鈕給我們建議，我們會非常感激的 =)"
+        msg = "看樣子，你的朋友的課表出了點問題。請用右下角的回報按鈕給我們建議，我們會非常感激的 =)"
         render :partial => "shared/alert", :locals => {:msg => msg, :type => "alert"}
       end
     else
