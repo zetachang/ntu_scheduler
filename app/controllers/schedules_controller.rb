@@ -1,5 +1,7 @@
 class SchedulesController < ApplicationController
   def show
+    @schedule = Schedule.find_by_permalink(params[:id])
+    render "show"
   end
 
   def show_self
@@ -22,10 +24,10 @@ class SchedulesController < ApplicationController
 
   def compare_me
     @schedule_set = ScheduleSet.create_by_two(params[:id], current_user.schedule.id, current_user.id)
-
-    respond_to do |format|
-      format.json { render :json => {:status => "SUCCESS", :schedule_set => @schedule_set.id } }
-    end
+    render :partial => 'schedule_sets/compare_show', :locals => {:schedule_set => @schedule_set}
+    #respond_to do |format|
+    #  format.json { render :json => {:status => "SUCCESS", :schedule_set => @schedule_set.id } }
+    #end
   end
 
 end
