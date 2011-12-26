@@ -1,3 +1,4 @@
+---
 facebook: &facebook
   app_id: 200605363362845
   secret_key: ENV['facebook_key']
