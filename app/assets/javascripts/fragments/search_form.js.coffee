@@ -10,7 +10,7 @@ $ ->
     if(e.which == 13)
       return false
   )
-    
+   
   $('#suggest_form').append('<input type="hidden" name="fb_uid">')
   disableFormElements $('#suggest_form')
 
@@ -28,6 +28,7 @@ $ ->
           $('input[name="fb_uid"]').attr("value", ui.item.id)
           $('#suggest_form').submit()
           $('#fb_suggest').attr('value', "")
+          return false
         delay: 10
 
       # Overwrite render item function to insert small icon
