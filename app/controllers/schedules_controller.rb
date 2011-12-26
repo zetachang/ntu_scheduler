@@ -1,7 +1,7 @@
 class SchedulesController < ApplicationController
   def show
     @schedule = Schedule.find_by_permalink(params[:id])
-    render "show"
+    render "show_permalink"
   end
 
   def show_self
