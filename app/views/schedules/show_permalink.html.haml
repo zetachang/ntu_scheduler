@@ -18,5 +18,5 @@
       = link_to "開始分享你的課表", Facebook::CALLBACK_URL
   #content.span16
     = render :partial => "shared/user_info", :locals => {:user => @schedule.user}
-    .fb-like{"data-send"=>false, "data-layout"=>"button_count", "data-width"=>"80px", "data-show-faces"=>true, "data-url" => "#{schedule_url(@schedule)}"}
+    .fb-like{"data-send"=>false, "data-layout"=>"button_count", "data-width"=>"80px", "data-show-faces"=>true"}
     = render :partial => "schedule_table", :locals => {:schedule => @schedule}
