@@ -5,13 +5,7 @@
     = stylesheet_link_tag "application"
     = javascript_include_tag "application"
     = csrf_meta_tags
-    %meta{"property" => "fb:app_id", "content" => "200605363362845"}
-    %meta{"property" => "og:title", "content" => "課表配對樂"}
-    %meta{"property" => "og:type", "content" => "website"}
-    %meta{"property" => "og:site_name", "content" => "課表配對樂"}
-    %meta{"property" => "og:description", "content" => "好奇朋友選了什麼課嗎？\n來使用課表配對樂\n輕鬆分享你的課表！"}
-    %meta{"property" => "og:url", "content" => "http://everyscheduler.herokuapp.com/"}
-    %meta{"property" => "og:image", "content" => "http://everyscheduler.herokuapp.com/assets/logo_icon.gif"}
+    = yield :og_info
     :javascript
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-27940265-1']);

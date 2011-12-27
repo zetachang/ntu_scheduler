@@ -1,5 +1,14 @@
 - content_for :title do
   %title EveryScheduler
+- content_for :og_info do
+  %meta{"property" => "fb:app_id", "content" => "#{Facebook::APP_ID}"}
+  %meta{"property" => "og:title", "content" => "課表配對樂"}
+  %meta{"property" => "og:type", "content" => "website"}
+  %meta{"property" => "og:site_name", "content" => "課表配對樂"}
+  %meta{"property" => "og:description", "content" => "好奇朋友選了什麼課嗎？\n來使用課表配對樂\n輕鬆分享你的課表！"}
+  %meta{"property" => "og:url", "content" => "#{Facebook::CALLBACK_URL}"}
+  %meta{"property" => "og:image", "content" => "http://everyscheduler.herokuapp.com/assets/logo_icon.gif"}
+
 %h1.big-logo EveryScheduler 課表繽紛樂
 .row
   .span8.offset4
