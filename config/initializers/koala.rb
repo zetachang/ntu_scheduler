@@ -4,9 +4,9 @@
 
 module Facebook
   CONFIG = YAML.load_file(Rails.root.join("config/facebook.yml"))[Rails.env]
-  APP_ID = ENV['app_id'] || "195138283911045"
-  SECRET = ENV['facebook_key'] || "12e945a1206842c31fc7c9631d1ef1de"
-  CALLBACK_URL = CONFIG['callback_url']
+  APP_ID = ENV['app_id'] || CONFIG['app_id']
+  SECRET = ENV['facebook_key'] || CONFIG['secret_key']
+  CALLBACK_URL = ENV['facebook_callback'] || CONFIG['callback_url']
   PERMISSIONS = CONFIG['permissions']
   if Rails.env.test?
     test_users = Koala::Facebook::TestUsers.new(:app_id => APP_ID, :secret => SECRET)
