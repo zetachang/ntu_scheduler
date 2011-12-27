@@ -6,7 +6,7 @@
   %meta{"property" => "og:title", "content" => "#{@schedule.user.name} 的課表 - 課表配對樂"}
   %meta{"property" => "og:description", "content" => "#{@schedule.user.name} 分享了他的課表！"}
   %meta{"property" => "og:url", "content" => "#{schedule_url(@schedule)}"}
-  %meta{"property" => "og:image", "content" => "http://everyscheduler.herokuapp.com/assets/logo_icon.gif"}
+  %meta{"property" => "og:image", "content" => "#{root_url + asset_path("logo_icon.gif")}"}
 
 .row
   #header.span16
