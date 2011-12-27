@@ -2,7 +2,6 @@
   %title #{@schedule.user.name} 的課表 - 課表配對樂
 - content_for :og_info do
   %meta{"property" => "fb:app_id", "content" => "#{Facebook::APP_ID}"}
-  %meta{"property" => "og:site_name", "content" => "課表配對樂"}
   %meta{"property" => "og:type", "content" => "website"}
   %meta{"property" => "og:title", "content" => "#{@schedule.user.name} 的課表 - 課表配對樂"}
   %meta{"property" => "og:description", "content" => "#{@schedule.user.name} 分享了他的課表！"}
@@ -18,5 +17,5 @@
       = link_to "開始分享你的課表", Facebook::CALLBACK_URL
   #content.span16
     = render :partial => "shared/user_info", :locals => {:user => @schedule.user}
-    .fb-like{"data-send"=>false, "data-layout"=>"button_count", "data-width"=>"80px", "data-show-faces"=>true"}
+    .fb-like{"data-send"=>false, "data-layout"=>"button_count", "data-width"=>"80px", "data-show-faces"=>"true"}
     = render :partial => "schedule_table", :locals => {:schedule => @schedule}
