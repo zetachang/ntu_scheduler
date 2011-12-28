@@ -32,7 +32,7 @@ class SchedulesController < ApplicationController
     @schedule_set = ScheduleSet.create_by_two(params[:id], current_user.schedule.id, current_user.id)
     @you = Schedule.find(params[:id]).user
     # Check friendshop before comparing for privacy consideration
-    if current_friends.include?(@you.facebook_uid.to_s)
+    if current_friends.include?(@you.facebook_uid)
       render :partial => 'schedule_sets/compare_show', :locals => {:schedule_set => @schedule_set,:you => @you}
     else
       render :nothing => true, :status => 500 
