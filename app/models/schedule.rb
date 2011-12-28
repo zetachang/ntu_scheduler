@@ -29,10 +29,6 @@ class Schedule < ActiveRecord::Base
       one_day
     end
   end
-
-  def to_param
-    permalink
-  end
   
   after_create do |schedule| 
     begin

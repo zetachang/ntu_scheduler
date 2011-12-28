@@ -2,5 +2,5 @@
   %a{:href=>'#'}
     - post_obj = {:method => 'feed',
       :redirect_uri => Facebook::CALLBACK_URL,
-      :link => schedule_url(schedule, :protocol => 'http')}
+      :link => schedule_url(schedule.permalink, :protocol => 'http')}
     = image_tag "facebook_share_icon.gif", :class => 'fb_share', "data-obj" => post_obj.to_json
