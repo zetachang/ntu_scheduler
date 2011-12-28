@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111225140333) do
+ActiveRecord::Schema.define(:version => 20111228152332) do
 
   create_table "days", :force => true do |t|
     t.integer  "schedule_id", :null => false
@@ -56,9 +56,9 @@ ActiveRecord::Schema.define(:version => 20111225140333) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "name",                      :null => false
-    t.string   "student_id",                :null => false
-    t.integer  "facebook_uid", :limit => 8, :null => false
+    t.string   "name",                       :null => false
+    t.string   "student_id",                 :null => false
+    t.string   "facebook_uid", :limit => 20, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
