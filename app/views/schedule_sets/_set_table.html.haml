@@ -10,9 +10,9 @@
       %th Friday
       %th Saturday
   %tbody
-    - (0...15).each do |time|
+    - (1...15).each do |time|
       %tr
-        %td= time + 1
+        %td= time
         - (0...6).each do |day|
           - if hash[day][time].empty?
             %td
