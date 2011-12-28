@@ -47,7 +47,7 @@ class ApplicationController < ActionController::Base
   end
   
   def current_friends
-    @current_friends ||= @graph.get_connections("me", "friends")
+    @current_friends ||= @graph.get_connections("me", "friends").map{|f| f["id"]}
   end
 
 end
