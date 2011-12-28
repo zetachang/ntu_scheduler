@@ -1,7 +1,7 @@
 ---
 facebook: &facebook
-  app_id: 200605363362845
-  secret_key: 1111111111111
+  app_id: 195138283911045
+  secret_key: 12e945a1206842c31fc7c9631d1ef1de
   callback_url: http://apps.facebook.com/everyscheduler-dev/
   permissions: ""
 
