@@ -1,9 +1,9 @@
 $ ->
-  $('.small_profile').twipsy(
+  $('.twip').twipsy(
     placement:"left"
     live:true
   )
-
+  
   $('.more-block').live "click", ->
     if $(this).data("more")
       $(this).data("more").modal("show")

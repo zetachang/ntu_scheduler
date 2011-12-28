@@ -31,6 +31,7 @@ $ ->
   $('.compare_button a')
   .live("ajax:beforeSend", ->
     $content.block()
+    $('.error_msg').hide()
     $('.error_msg').html("")
   )
   .live("ajax:success", (evt, data, status, xhr)->
@@ -39,6 +40,7 @@ $ ->
   )
   .live("ajax:error", (evt, xhr, status, error)->
     $('.error_msg').html("← 出錯囉，點選logo回到我的課表")
+    $('.error_msg').show()
     $('.error_msg').fadeIn()
   )
   .live("ajax:complete", ->

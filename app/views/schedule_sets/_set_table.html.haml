@@ -20,7 +20,7 @@
             %td
               - hash[day][time].slice(0..1).each do |lesson|
                 = image_tag "http://graph.facebook.com/#{lesson[:user].facebook_uid}/picture?type=square",
-                  :class => 'small_profile', "title" => "#{lesson[:name]}" + ("(#{lesson[:location]})" if lesson[:location]).to_s
+                  :class => 'small_profile twip', "title" => "#{lesson[:name]}" + ("(#{lesson[:location]})" if lesson[:location]).to_s
               - if hash[day][time].size > 2
                 .more-block
                   = "#{hash[day][time].size - 2}+"
