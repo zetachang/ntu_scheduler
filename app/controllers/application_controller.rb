@@ -42,7 +42,7 @@ class ApplicationController < ActionController::Base
   
   def current_user
     if @me
-      @current_user ||= User.includes(:schedule => {:days => :lessons}).find_by_facebook_uid(@me["id"])
+      @current_user ||= User.includes(:schedule => {:days => :lessons}).find_by_facebook_uid(@me["id"].to_s)
     end
   end
   
