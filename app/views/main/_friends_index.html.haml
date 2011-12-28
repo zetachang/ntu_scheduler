@@ -1,0 +1,10 @@
+- unless friends.blank?
+  .showcase_block
+    %h3 使用課表配對樂的朋友們
+    .friends_box
+      - friends.each do |f|
+        %a{:href => show_friend_path(:fb_uid => f.facebook_uid), :class =>'content_link'}
+          = square_profile(f, :class => 'framed_img hover_blur twip', :title => f.name)
+.showcase_block
+  %h3 你的朋友還沒開始使用的話
+  = link_to "邀請他或她", "#", :class => 'btn', :id => 'send_invitation'

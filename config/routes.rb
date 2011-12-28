@@ -10,6 +10,7 @@ NtuScheduler::Application.routes.draw do
   get 'schedules/:id' => 'schedules#show', :as => "schedule"
   post 'schedules/compare_me/:id' => 'schedules#compare_me', :as => 'compare_with_me'
   get 'main/friends' => 'main#friends'
+  get 'main/firends_index' => 'main#friends_index', :as => 'friends_index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

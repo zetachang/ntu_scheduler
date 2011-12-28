@@ -10,4 +10,9 @@ class MainController < ApplicationController
     arr = friends.map{|f| {:value => f['name'], :id => f['id']} }
     render :json => arr
   end
+  
+  def friends_index
+    @friends = User.where(:facebook_uid => current_friends)
+    render :partial => 'main/friends_index', :locals => {:friends => @friends}
+  end
 end
