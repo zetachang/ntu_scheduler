@@ -3,6 +3,7 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $ ->
+    $('input, textarea').placeholder()
     $('#spinner').hide()
     $('form.new_user')
     .bind('ajax:before', ->

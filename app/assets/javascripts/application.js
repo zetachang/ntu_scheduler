@@ -9,6 +9,7 @@
 //= require jquery-ui
 //= require jquery.blockUI
 //= require jquery.form
+//= require jquery.placeholder
 //= require utility
 //= require bootstrap
 //= require_tree .
