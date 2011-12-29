@@ -10,8 +10,8 @@
       %th Friday
       %th Saturday
   %tbody
-    - (1...15).each do |time|
+    - (0...15).each do |time|
       %tr
-        %td= time
+        %td= time_number(time)
         - (0...6).each do |day|
           %td= lesson_names[day][time]
